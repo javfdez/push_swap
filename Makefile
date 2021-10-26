@@ -6,7 +6,7 @@
 #    By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 12:14:32 by javferna          #+#    #+#              #
-#    Updated: 2021/10/26 16:39:14 by javferna         ###   ########.fr        #
+#    Updated: 2021/10/26 18:27:03 by javferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ INC_DIR = inc/
 INC_LIBFT_DIR = Libft/inc/
 
 SRC	= $(addprefix $(SRC_DIR),	\
-		)
+		main.c					\
+		exit.c)
 
 OBJ = $(SRC:.c=.o)
 

@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/26 19:24:18 by javferna         ###   ########.fr       */
+/*   Created: 2021/10/26 18:17:31 by javferna          #+#    #+#             */
+/*   Updated: 2021/10/26 18:20:08 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# define MAX_INT 2147483647
+#include <push_swap.h>
 
-# include <../Libft/inc/libft.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <fcntl.h>
-
-void	error_end(void);
-
-#endif
+void	error_end(void)
+{
+	write(1, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
