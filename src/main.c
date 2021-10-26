@@ -6,36 +6,13 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:57:47 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/26 21:11:25 by javferna         ###   ########.fr       */
+/*   Updated: 2021/10/26 21:38:51 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static int	ft_atoi_ps(const char *str, char **inputs, t_list **stack_a)
-{
-	unsigned long long	nb;
-	int					i;
-	int					sign;
-
-	i = 0;
-	sign = 1;
-	nb = 0;
-	while (str[i] == ' ' || str[i] == '\r' || str[i] == '\f' || str[i] == '\v'
-		|| str[i] == '\n' || str[i] == '\t')
-		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
-		nb = nb * 10 + str[i++] - '0';
-	if (nb > MAX_INT)
-		free_i_s_error(inputs, *(&stack_a));
-	return (nb * sign);
-}
-
-static void	fill_stack(char** inputs, t_list **stack_a)
+static void	fill_stack(char **inputs, t_list **stack_a)
 {
 	int		n;
 	int		i;
@@ -78,16 +55,40 @@ static void	check_inputs(char **inputs, t_list **stack_a)
 	}
 }
 
+static char	*argv_whitesp(char *argv)
+{
+	int		i;
+	char	*str;
+
+	i = -1;
+	str = malloc(sizeof(char) * (ft_strlen(argv) + 1));
+	if (!str)
+		return (NULL);
+	while (argv[++i])
+	{
+		if (argv[i] == '\f' || argv[i] == '\n' || argv[i] == '\r'
+			|| argv[i] == '\t' || argv[i] == '\v')
+			str[i] = ' ';
+		else
+			str[i] = argv[i];
+	}
+	str[i] = '\0';
+	return (str);
+}
+
 int	main(int argc, char const **argv)
 {
 	int		i;
+	char	*str;
 	char	**inputs;
 	t_list	*stack_a;
 
 	i = 0;
 	while (++i < argc)
 	{
-		inputs = ft_split(argv[i], ' ');
+		str = argv_whitesp(argv[i]);
+		inputs = ft_split(str, ' ');
+		free(str);
 		check_inputs(inputs, &stack_a);
 		fill_stack(inputs, &stack_a);
 		free_inputs(inputs);

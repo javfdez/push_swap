@@ -6,19 +6,25 @@
 #    By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 12:14:32 by javferna          #+#    #+#              #
-#    Updated: 2021/10/26 21:13:06 by javferna         ###   ########.fr        #
+#    Updated: 2021/10/26 21:31:03 by javferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_DIR = src/
 INC_DIR = inc/
 INC_LIBFT_DIR = Libft/inc/
+UTILS_DIR = utils/
 
 SRC	= $(addprefix $(SRC_DIR),	\
-		main.c					\
+		main.c)
+
+UTILS = $(addprefix $(UTILS_DIR),	\
+		atoi.c						\
 		exit_free.c)
 
 OBJ = $(SRC:.c=.o)
+
+OBJ_UTILS = $(UTILS:.c=.o)
 
 CC = gcc
 
@@ -34,12 +40,12 @@ NAME = push_swap
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(OBJ_UTILS)
 	$(MAKE) -C Libft
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(OBJ_UTILS) $(LIBFT) -o $(NAME)
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(OBJ_UTILS)
 	$(MAKE) -C Libft clean
 
 fclean: clean
