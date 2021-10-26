@@ -6,7 +6,7 @@
 #    By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 12:14:32 by javferna          #+#    #+#              #
-#    Updated: 2021/10/26 21:31:03 by javferna         ###   ########.fr        #
+#    Updated: 2021/10/26 23:41:30 by javferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC	= $(addprefix $(SRC_DIR),	\
 
 UTILS = $(addprefix $(UTILS_DIR),	\
 		atoi.c						\
-		exit_free.c)
+		exit_free.c					\
+		str_fd0.c)
 
 OBJ = $(SRC:.c=.o)
 

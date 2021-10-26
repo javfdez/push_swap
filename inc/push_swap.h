@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/26 21:18:20 by javferna         ###   ########.fr       */
+/*   Updated: 2021/10/26 23:42:44 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ void	error_end(void);
 void	free_inputs(char **inputs);
 void	free_i_s_error(char **inputs, t_list **stack_a);
 int		ft_atoi_ps(const char *str, char **inputs, t_list **stack_a);
+char	*str_fd0(char *argv);
+char	*whitespace(char *argv);
 
 #endif

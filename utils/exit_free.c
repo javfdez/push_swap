@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 18:17:31 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/26 20:47:03 by javferna         ###   ########.fr       */
+/*   Updated: 2021/10/27 00:57:49 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,13 @@ void	free_i_s_error(char **inputs, t_list **stack_a)
 	int	i;
 
 	i = 0;
-	while (inputs[i])
-		free(inputs[i++]);
-	free(inputs);
+	if (inputs)
+	{
+		while (inputs[i])
+			free(inputs[i++]);
+		free(inputs);
+	}
 	if (stack_a)
-		ft_lstclear(*(&stack_a), NULL);
+		ft_lstclear(*&stack_a, free);
 	error_end();
 }
