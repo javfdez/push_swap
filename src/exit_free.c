@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   exit_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 18:17:31 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/26 18:20:08 by javferna         ###   ########.fr       */
+/*   Updated: 2021/10/26 20:47:03 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,27 @@ void	error_end(void)
 {
 	write(1, "Error\n", 6);
 	exit(EXIT_FAILURE);
+}
+
+void	free_inputs(char **inputs)
+{
+	int	i;
+
+	i = 0;
+	while (inputs[i])
+		free(inputs[i++]);
+	free(inputs);
+}
+
+void	free_i_s_error(char **inputs, t_list **stack_a)
+{
+	int	i;
+
+	i = 0;
+	while (inputs[i])
+		free(inputs[i++]);
+	free(inputs);
+	if (stack_a)
+		ft_lstclear(*(&stack_a), NULL);
+	error_end();
 }
