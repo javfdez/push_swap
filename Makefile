@@ -6,13 +6,13 @@
 #    By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 12:14:32 by javferna          #+#    #+#              #
-#    Updated: 2021/10/26 13:12:50 by javferna         ###   ########.fr        #
+#    Updated: 2021/10/26 16:39:14 by javferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_DIR = src/
 INC_DIR = inc/
-LIBFT = Libft/libft.a
+INC_LIBFT_DIR = Libft/inc/
 
 SRC	= $(addprefix $(SRC_DIR),	\
 		)
@@ -23,7 +23,11 @@ CC = gcc
 
 INC = -I$(INC_DIR)
 
-CFLAGS = -Wall -Wextra -Werror $(INC)
+INC_LIBFT = -I$(INC_LIBFT_DIR)
+
+CFLAGS = -Wall -Wextra -Werror $(INC) $(INC_LIBFT_DIR)
+
+LIBFT = Libft/libft.a
 
 NAME = push_swap
 
