@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:23:46 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/27 00:29:42 by javferna         ###   ########.fr       */
+/*   Updated: 2021/10/27 22:19:59 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*str_fd0(char *argv)
 	if (!argv)
 		return (NULL);
 	i = 0;
-	while(read(0, &c, 1) && i < 1999)
+	while (read(0, &c, 1) && i < 1999)
 		str[i++] = c;
 	if (i == 1999)
 		error_end();

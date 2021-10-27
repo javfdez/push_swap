@@ -6,7 +6,7 @@
 #    By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 12:14:32 by javferna          #+#    #+#              #
-#    Updated: 2021/10/27 19:32:50 by javferna         ###   ########.fr        #
+#    Updated: 2021/10/27 22:24:50 by javferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ INC_LIBFT_DIR = Libft/inc/
 UTILS_DIR = utils/
 
 SRC	= $(addprefix $(SRC_DIR),	\
-		main.c)
+		main.c					\
+		parse.c)
 
 UTILS = $(addprefix $(UTILS_DIR),	\
 		atoi.c						\
