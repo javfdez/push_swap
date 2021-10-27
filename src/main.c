@@ -6,11 +6,20 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:57:47 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/27 12:09:18 by javferna         ###   ########.fr       */
+/*   Updated: 2021/10/27 13:22:34 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+static void	check_duplicates(t_list **stack_a)
+{
+	t_list	*aux;
+
+	aux = malloc(sizeof(t_list));
+	aux->content = (*stack_a)->content;
+	free(aux);
+}
 
 static void	fill_stack(char **inputs, t_list **stack_a)
 {
@@ -23,13 +32,16 @@ static void	fill_stack(char **inputs, t_list **stack_a)
 	{
 		n = malloc(sizeof(int) * 1);
 		if (!n)
-			free_inputs_stack(inputs, stack_a);
-		*n = ft_atoi_ps(inputs[i], inputs, *(&stack_a));
+			free_all_error(inputs, stack_a);
+		ft_atoi_ps(inputs[i], inputs, stack_a, n);
 		if (!*stack_a)
 			*stack_a = ft_lstnew((void *)n);
 		else
 			ft_lstadd_back(*&stack_a, ft_lstnew(n));
 	}
+	free_inputs(inputs);
+	ft_printcontent(stack_a);
+	check_duplicates(stack_a);
 }
 
 static void	check_inputs(char **inputs, t_list **stack_a)
@@ -39,7 +51,7 @@ static void	check_inputs(char **inputs, t_list **stack_a)
 
 	i = -1;
 	if (!inputs || !*inputs)
-		free_inputs_stack(inputs, stack_a);
+		free_all_error(inputs, stack_a);
 	while (inputs[++i])
 	{
 		j = 0;
@@ -48,7 +60,7 @@ static void	check_inputs(char **inputs, t_list **stack_a)
 		while (inputs[i][j])
 		{
 			if (inputs[i][j] < '0' || inputs[i][j] > '9')
-				free_inputs_stack(inputs, stack_a);
+				free_all_error(inputs, stack_a);
 			j++;
 		}
 	}
@@ -76,7 +88,6 @@ int	main(int argc, char **argv)
 			free(str);
 		check_inputs(inputs, &stack_a);
 		fill_stack(inputs, &stack_a);
-		free_inputs(inputs);
 	}
 	ft_lstclear(&stack_a, free);
 	return (0);

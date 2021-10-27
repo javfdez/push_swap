@@ -6,15 +6,15 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:17:39 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/27 11:42:32 by javferna         ###   ########.fr       */
+/*   Updated: 2021/10/27 13:20:38 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	ft_atoi_ps(const char *str, char **inputs, t_list **stack_a)
+void	ft_atoi_ps(const char *str, char **inputs, t_list **stack_a, int *n)
 {
-	unsigned long long	nb;
+	long long	nb;
 	int					i;
 	int					sign;
 
@@ -30,7 +30,11 @@ int	ft_atoi_ps(const char *str, char **inputs, t_list **stack_a)
 		i++;
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 		nb = nb * 10 + str[i++] - '0';
-	if (nb > MAX_INT)
-		free_inputs_stack(inputs, stack_a);
-	return (nb * sign);
+	nb *= sign;
+	if (i > 12|| nb > MAX_INT || nb < MIN_INT)
+	{
+		free(n);
+		free_all_error(inputs, stack_a);
+	}
+	*n = nb;
 }
