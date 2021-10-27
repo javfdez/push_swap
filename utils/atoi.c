@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:17:39 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/26 21:18:01 by javferna         ###   ########.fr       */
+/*   Updated: 2021/10/27 11:42:32 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int	ft_atoi_ps(const char *str, char **inputs, t_list **stack_a)
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 		nb = nb * 10 + str[i++] - '0';
 	if (nb > MAX_INT)
-		free_i_s_error(inputs, *(&stack_a));
+		free_inputs_stack(inputs, stack_a);
 	return (nb * sign);
 }

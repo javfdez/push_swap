@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:57:47 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/27 01:09:24 by javferna         ###   ########.fr       */
+/*   Updated: 2021/10/27 12:09:18 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ static void	fill_stack(char **inputs, t_list **stack_a)
 	{
 		n = malloc(sizeof(int) * 1);
 		if (!n)
-			error_end();
+			free_inputs_stack(inputs, stack_a);
 		*n = ft_atoi_ps(inputs[i], inputs, *(&stack_a));
 		if (!*stack_a)
 			*stack_a = ft_lstnew((void *)n);
 		else
 			ft_lstadd_back(*&stack_a, ft_lstnew(n));
-		free(n);
 	}
 }
 
@@ -40,7 +39,7 @@ static void	check_inputs(char **inputs, t_list **stack_a)
 
 	i = -1;
 	if (!inputs || !*inputs)
-		free_i_s_error(inputs, *(&stack_a));
+		free_inputs_stack(inputs, stack_a);
 	while (inputs[++i])
 	{
 		j = 0;
@@ -49,7 +48,7 @@ static void	check_inputs(char **inputs, t_list **stack_a)
 		while (inputs[i][j])
 		{
 			if (inputs[i][j] < '0' || inputs[i][j] > '9')
-				free_i_s_error(inputs, *(&stack_a));
+				free_inputs_stack(inputs, stack_a);
 			j++;
 		}
 	}
@@ -65,7 +64,7 @@ int	main(int argc, char **argv)
 	i = -1;
 	if (argc > 1)
 		i = 0;
-	stack_a = ft_lstnew(&i);
+	stack_a = NULL;
 	while (++i < argc)
 	{
 		if (argc == 1)
@@ -76,9 +75,9 @@ int	main(int argc, char **argv)
 		if (str)
 			free(str);
 		check_inputs(inputs, &stack_a);
-		fill_stack(inputs, &stack_a); //HERE
+		fill_stack(inputs, &stack_a);
 		free_inputs(inputs);
 	}
-	//ft_lstclear(&stack_a, free);
+	ft_lstclear(&stack_a, free);
 	return (0);
 }
