@@ -6,19 +6,32 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:57:47 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/27 13:22:34 by javferna         ###   ########.fr       */
+/*   Updated: 2021/10/27 19:32:09 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static void	check_duplicates(t_list **stack_a)
+static void	check_duplicates(t_list *stack_a) //Check or redo
 {
-	t_list	*aux;
+	t_list	aux;
+	t_list	aux2;
 
-	aux = malloc(sizeof(t_list));
-	aux->content = (*stack_a)->content;
-	free(aux);
+	aux.next = stack_a->next;
+	aux2.content = stack_a->content;
+	aux2.next = stack_a->next;
+	while(aux.next)
+	{
+		while(aux2.next)
+		{
+			if(*(int *)aux2.content == *(int *)aux2.next->content)
+				free_all_error(NULL, &stack_a);
+			aux2.next = aux2.next->next;
+		}
+		aux2.next = aux.next->next;
+		aux2.content = aux.next->content;
+		aux.next= aux.next->next;
+	}
 }
 
 static void	fill_stack(char **inputs, t_list **stack_a)
@@ -40,8 +53,6 @@ static void	fill_stack(char **inputs, t_list **stack_a)
 			ft_lstadd_back(*&stack_a, ft_lstnew(n));
 	}
 	free_inputs(inputs);
-	ft_printcontent(stack_a);
-	check_duplicates(stack_a);
 }
 
 static void	check_inputs(char **inputs, t_list **stack_a)
@@ -63,6 +74,16 @@ static void	check_inputs(char **inputs, t_list **stack_a)
 				free_all_error(inputs, stack_a);
 			j++;
 		}
+	}
+}
+
+void ft_printcontent(t_list *stack_a)
+{
+	printf("%i\n", *(int *)stack_a->content);
+	while(stack_a->next)
+	{
+		printf("%i\n", *(int *)stack_a->next->content);
+		stack_a->next = stack_a->next->next;
 	}
 }
 
@@ -89,6 +110,8 @@ int	main(int argc, char **argv)
 		check_inputs(inputs, &stack_a);
 		fill_stack(inputs, &stack_a);
 	}
+	check_duplicates(stack_a);
+	ft_printcontent(stack_a);
 	ft_lstclear(&stack_a, free);
 	return (0);
 }
