@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:57:47 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/27 19:32:09 by javferna         ###   ########.fr       */
+/*   Updated: 2021/10/27 21:55:22 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,6 @@ static void	check_inputs(char **inputs, t_list **stack_a)
 				free_all_error(inputs, stack_a);
 			j++;
 		}
-	}
-}
-
-void ft_printcontent(t_list *stack_a)
-{
-	printf("%i\n", *(int *)stack_a->content);
-	while(stack_a->next)
-	{
-		printf("%i\n", *(int *)stack_a->next->content);
-		stack_a->next = stack_a->next->next;
 	}
 }
 
