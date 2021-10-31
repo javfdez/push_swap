@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:23:46 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/27 22:19:59 by javferna         ###   ########.fr       */
+/*   Updated: 2021/10/31 12:27:52 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*whitespace(char *argv)
 
 char	*str_fd0(char *argv)
 {
-	char	str[2000];
+	char	str[MAX_LINE];
 	char	*strw;
 	char	c;
 	int		i;
@@ -45,9 +45,9 @@ char	*str_fd0(char *argv)
 	if (!argv)
 		return (NULL);
 	i = 0;
-	while (read(0, &c, 1) && i < 1999)
+	while (read(0, &c, 1) && i < MAX_LINE)
 		str[i++] = c;
-	if (i == 1999)
+	if (i == MAX_LINE)
 		error_end();
 	str[i] = '\0';
 	strw = whitespace(str);
