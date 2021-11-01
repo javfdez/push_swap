@@ -6,7 +6,7 @@
 #    By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 12:14:32 by javferna          #+#    #+#              #
-#    Updated: 2021/11/01 10:19:56 by javferna         ###   ########.fr        #
+#    Updated: 2021/11/01 13:01:29 by javferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ UTILS_DIR = utils/
 SRC	= $(addprefix $(SRC_DIR),	\
 		main.c					\
 		parse.c					\
-		push_swap.c)
+		push_swap.c				\
+		check_moves.c)
 
 UTILS = $(addprefix $(UTILS_DIR),	\
 		atoi.c						\

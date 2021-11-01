@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:57:47 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/31 12:33:17 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/01 13:02:01 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(int argc, char **argv)
 		fill_stack(inputs, &stack_a);
 	}
 	check_duplicates(stack_a);
+	push_swap(&stack_a);
 	ft_lstclear(&stack_a, free);
 	return (0);
 }
