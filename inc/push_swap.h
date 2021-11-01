@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/01 01:40:53 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/01 10:19:11 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define RRA 6
 # define RRB 7
 # define RRR 8
+# define PA 9
+# define PB 10
 
 # include <libft.h>
 # include <unistd.h>
@@ -43,6 +45,6 @@ void	check_inputs(char **inputs, t_list **stack_a);
 void	swap(t_list **stack_a, t_list **stack_b, int ab);
 void	rotate(t_list **stack_a, t_list **stack_b, int ab);
 void	r_rotate(t_list **stack_a, t_list **stack_b, int ab);
-
+void	push(t_list **stack_dst, t_list **stack_src, int ab);
 
 #endif

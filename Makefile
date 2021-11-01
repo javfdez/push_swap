@@ -6,7 +6,7 @@
 #    By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 12:14:32 by javferna          #+#    #+#              #
-#    Updated: 2021/11/01 01:19:39 by javferna         ###   ########.fr        #
+#    Updated: 2021/11/01 10:19:56 by javferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,15 @@ UTILS_DIR = utils/
 SRC	= $(addprefix $(SRC_DIR),	\
 		main.c					\
 		parse.c					\
-		moves.c)
+		push_swap.c)
 
 UTILS = $(addprefix $(UTILS_DIR),	\
 		atoi.c						\
 		exit_free.c					\
-		str_fd0.c)
+		str_fd0.c					\
+		swap.c						\
+		rotate.c					\
+		push.c)
 
 OBJ = $(SRC:.c=.o)
 
