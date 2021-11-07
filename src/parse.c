@@ -6,16 +6,16 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 22:22:55 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/27 22:23:23 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:44:15 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	check_duplicates(t_list *stack_a)
+void	check_duplicates(t_stack *stack_a)
 {
-	t_list	aux;
-	t_list	aux2;
+	t_stack	aux;
+	t_stack	aux2;
 
 	aux.next = stack_a->next;
 	aux2.content = stack_a->content;
@@ -24,7 +24,7 @@ void	check_duplicates(t_list *stack_a)
 	{
 		while (aux2.next)
 		{
-			if (*(int *)aux2.content == *(int *)aux2.next->content)
+			if (aux2.content == aux2.next->content)
 				free_all_error(NULL, &stack_a);
 			aux2.next = aux2.next->next;
 		}
@@ -34,28 +34,24 @@ void	check_duplicates(t_list *stack_a)
 	}
 }
 
-void	fill_stack(char **inputs, t_list **stack_a)
+void	fill_stack(char **inputs, t_stack **stack_a)
 {
-	int		*n;
+	int		n;
 	int		i;
 
 	i = -1;
-	n = NULL;
 	while (inputs[++i])
 	{
-		n = malloc(sizeof(int) * 1);
-		if (!n)
-			free_all_error(inputs, stack_a);
-		ft_atoi_ps(inputs[i], inputs, stack_a, n);
+		n = ft_atoi_ps(inputs[i], inputs, stack_a);
 		if (!*stack_a)
-			*stack_a = ft_lstnew((void *)n);
+			*stack_a = ft_lstnew_stack(n);
 		else
-			ft_lstadd_back(*&stack_a, ft_lstnew(n));
+			ft_lstadd_back_stack(*&stack_a, ft_lstnew_stack(n));
 	}
 	free_inputs(inputs);
 }
 
-void	check_inputs(char **inputs, t_list **stack_a)
+void	check_inputs(char **inputs, t_stack **stack_a)
 {
 	int	i;
 	int	j;

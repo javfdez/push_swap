@@ -6,23 +6,23 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 10:03:01 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/01 10:19:01 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:28:34 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	push(t_list **stack_dst, t_list **stack_src, int ab)
+void	push(t_stack **stack_dst, t_stack **stack_src, int ab)
 {
-	t_list	*aux;
+	t_stack	*aux;
 
 	aux->next = *stack_src;
 	if (!*stack_dst)
-		*stack_dst = ft_lstnew((*stack_src)->content);
+		*stack_dst = ft_lstnew_stack((*stack_src)->content);
 	else
-		ft_lstadd_front(stack_dst, ft_lstnew((*stack_src)->content));
+		ft_lstadd_front_stack(stack_dst, ft_lstnew_stack((*stack_src)->content));
 	*stack_src = (*stack_src)->next;
-	ft_lstdelone(aux->next, NULL);
+	free(aux->next);
 	if (ab == PA)
 		write(1, "pa\n", 3);
 	if (ab == PB)

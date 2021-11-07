@@ -6,23 +6,23 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:40:11 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/01 10:17:29 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:30:37 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static void	do_rotate(t_list **stack)
+static void	do_rotate(t_stack **stack)
 {
-	t_list	*aux;
+	t_stack	aux;
 
-	aux->next = *stack;
-	ft_lstadd_back(stack, ft_lstnew((*stack)->content));
+	aux.next = *stack;
+	ft_lstadd_back_stack(stack, ft_lstnew_stack((*stack)->content));
 	*stack = (*stack)->next;
-	ft_lstdelone(aux->next, NULL);
+	free(aux.next);
 }
 
-void	rotate(t_list **stack_a, t_list **stack_b, int ab)
+void	rotate(t_stack **stack_a, t_stack **stack_b, int ab)
 {
 	if (ab == RA)
 	{
@@ -42,18 +42,18 @@ void	rotate(t_list **stack_a, t_list **stack_b, int ab)
 	}
 }
 
-static void	do_r_rotate(t_list **stack)
+static void	do_r_rotate(t_stack **stack)
 {
-	t_list	*aux;
+	t_stack	*aux;
 
 	aux->next = *stack;
 	while (aux->next->next)
 		aux = aux->next;
-	ft_lstadd_front(stack, aux->next->next);
+	ft_lstadd_front_stack(stack, aux->next->next);
 	aux->next = NULL;
 }
 
-void	r_rotate(t_list **stack_a, t_list **stack_b, int ab)
+void	r_rotate(t_stack **stack_a, t_stack **stack_b, int ab)
 {
 	if (ab == RRA)
 	{

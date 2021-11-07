@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/01 13:01:12 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:42:42 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,33 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+typedef struct s_stack
+{
+	int				content;
+	int				flag;
+	struct s_stack	*next;
+}	t_stack;
+
 void	error_end(void);
 void	free_inputs(char **inputs);
-void	free_all_error(char **inputs, t_list **stack);
-void	ft_atoi_ps(const char *str, char **inputs, t_list **stack_a, int *n);
+void	free_all_error(char **inputs, t_stack **stack);
+int		ft_atoi_ps(const char *str, char **inputs, t_stack **stack_a);
 char	*str_fd0(char *argv);
 char	*whitespace(char *argv);
-void	check_duplicates(t_list *stack_a);
-void	fill_stack(char **inputs, t_list **stack_a);
-void	check_inputs(char **inputs, t_list **stack_a);
-void	swap(t_list **stack_a, t_list **stack_b, int ab);
-void	rotate(t_list **stack_a, t_list **stack_b, int ab);
-void	r_rotate(t_list **stack_a, t_list **stack_b, int ab);
-void	push(t_list **stack_dst, t_list **stack_src, int ab);
-void	push_swap(t_list **stack_a);
-int		check_moves(t_list *stack_a, t_list *stack_b);
+void	check_duplicates(t_stack *stack_a);
+void	fill_stack(char **inputs, t_stack **stack_a);
+void	check_inputs(char **inputs, t_stack **stack_a);
+void	swap(t_stack **stack_a, t_stack **stack_b, int ab);
+void	rotate(t_stack **stack_a, t_stack **stack_b, int ab);
+void	r_rotate(t_stack **stack_a, t_stack **stack_b, int ab);
+void	push(t_stack **stack_dst, t_stack **stack_src, int ab);
+void	push_swap(t_stack **stack_a);
+void	index_stack(t_stack **stack_a, int i);
+int		ft_lstsize_stack(t_stack *lst);
+void	ft_lstadd_back_stack(t_stack **lst, t_stack *new);
+void	ft_lstadd_front_stack(t_stack **lst, t_stack *new);
+void	ft_lstclear_stack(t_stack **lst);
+t_stack	*ft_lstlast_stack(t_stack *lst);
+t_stack	*ft_lstnew_stack(int content);
 
 #endif

@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   index_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 10:20:04 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/07 19:47:29 by javferna         ###   ########.fr       */
+/*   Created: 2021/11/07 17:37:33 by javferna          #+#    #+#             */
+/*   Updated: 2021/11/07 19:48:04 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	push_swap(t_stack **stack_a)
+void	index_stack(t_stack **stack_a, int i)
 {
-	t_stack	*stack_b;
-	t_stack	*aux;
-	int		i;
+	t_stack	aux;
 	int		j;
 
-	i = ft_lstsize_stack(*stack_a);
-	index_stack(stack_a, i);
-	stack_b = NULL;
-	aux->next = *stack_a;
-	while (*stack_a)
+	j = 0;
+	while (j < i)
 	{
+		aux.content = (*stack_a)->content;
+		aux.next = (*stack_a)->next;
 	}
 }

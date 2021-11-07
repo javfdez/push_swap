@@ -6,13 +6,13 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:17:39 by javferna          #+#    #+#             */
-/*   Updated: 2021/10/27 22:19:12 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:08:31 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	ft_atoi_ps(const char *str, char **inputs, t_list **stack_a, int *n)
+int	ft_atoi_ps(const char *str, char **inputs, t_stack **stack_a)
 {
 	long long	nb;
 	int			i;
@@ -32,9 +32,6 @@ void	ft_atoi_ps(const char *str, char **inputs, t_list **stack_a, int *n)
 		nb = nb * 10 + str[i++] - '0';
 	nb *= sign;
 	if (i > 12 || nb > MAX_INT || nb < MIN_INT)
-	{
-		free(n);
 		free_all_error(inputs, stack_a);
-	}
-	*n = nb;
+	return (nb);
 }

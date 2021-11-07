@@ -6,23 +6,22 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 20:16:08 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/01 09:47:04 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:48:39 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static void	do_swap(t_list **stack)
+static void	do_swap(t_stack **stack)
 {
 	int	aux;
 
-	aux = *(int *)(*stack)->content;
-	*(int *)(*stack)->content = *(int *)(*stack)->next->content;
-	*(int *)(*stack)->next->content = aux;
-
+	aux = (*stack)->content;
+	(*stack)->content = (*stack)->next->content;
+	(*stack)->next->content = aux;
 }
 
-void	swap(t_list **stack_a, t_list **stack_b, int ab)
+void	swap(t_stack **stack_a, t_stack **stack_b, int ab)
 {
 	if (ab == SA)
 	{

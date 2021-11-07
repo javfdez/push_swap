@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:57:47 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/01 13:02:01 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:43:55 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	int		i;
 	char	*str;
 	char	**inputs;
-	t_list	*stack_a;
+	t_stack	*stack_a;
 
 	i = -1;
 	if (argc > 1)
@@ -37,6 +37,6 @@ int	main(int argc, char **argv)
 	}
 	check_duplicates(stack_a);
 	push_swap(&stack_a);
-	ft_lstclear(&stack_a, free);
+	ft_lstclear_stack(&stack_a);
 	return (0);
 }
