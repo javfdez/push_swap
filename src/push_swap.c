@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/09 18:07:56 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/09 18:09:03 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push_swap(t_stack **stack_a)
 {
-	t_stack	*stack_b;
+	//t_stack	*stack_b;
 	int		i;
 
 	i = ft_lstsize_stack(*stack_a);
