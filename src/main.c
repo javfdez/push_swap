@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:57:47 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/07 19:43:55 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:41:18 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	i = -1;
 	if (argc > 1)
 		i = 0;
-	stack_a = NULL;
 	while (++i < argc)
 	{
 		if (argc == 1)

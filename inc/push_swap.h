@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/07 19:42:42 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:25:13 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef struct s_stack
 	int				flag;
 	struct s_stack	*next;
 }	t_stack;
+
+typedef struct s_index
+{
+	t_stack	*target;
+	t_stack	*next;
+}	t_index;
 
 void	error_end(void);
 void	free_inputs(char **inputs);

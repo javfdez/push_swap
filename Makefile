@@ -6,7 +6,7 @@
 #    By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 12:14:32 by javferna          #+#    #+#              #
-#    Updated: 2021/11/07 19:42:17 by javferna         ###   ########.fr        #
+#    Updated: 2021/11/09 17:46:23 by javferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ UTILS_DIR = utils/
 SRC	= $(addprefix $(SRC_DIR),	\
 		main.c					\
 		parse.c					\
+		index_stack.c			\
 		push_swap.c)
 
 UTILS = $(addprefix $(UTILS_DIR),	\
@@ -27,7 +28,6 @@ UTILS = $(addprefix $(UTILS_DIR),	\
 		swap.c						\
 		rotate.c					\
 		push.c						\
-		index_stack.c				\
 		list_stack.c				\
 		list_stack_2.c)
 
@@ -41,7 +41,7 @@ INC = $(INC_DIR) $(INC_LIBFT_DIR)
 
 INC_PARAMS = $(INC:%=-I%)
 
-CFLAGS = -Wall -Wextra -Werror $(INC_PARAMS)
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g $(INC_PARAMS)
 
 LIBFT = Libft/libft.a
 
