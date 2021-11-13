@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/09 16:25:13 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:00:39 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define RRR 8
 # define PA 9
 # define PB 10
+# define TOP 10
+# define BOT 10
 
 # include <libft.h>
 # include <unistd.h>
