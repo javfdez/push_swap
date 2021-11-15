@@ -6,37 +6,55 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/13 18:51:51 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/15 21:42:28 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static int	find_moves_b(t_stack *stack_b, int node)
+static int	find_moves_b(t_stack *stack_b, int value)
 {
+	t_index	rev;
+	t_stack	*aux;
+	int		cnt_bt;
+	int		cnt_bb;
+	int		i;
 
+	i = ft_lstsize_stack(stack_b);
+	cnt_bt = -1;
+	while (++cnt_bt <= i && value < stack_b->content)
+		stack_b = stack_b->next;
+	while (++cnt_ab <= i && rev.target->content >= node)
+	{
+		aux = stack_a;
+		while (aux->next->content != rev.target->content)
+			aux = aux->next;
+		rev.target = aux->next;
+	}
+	if () //restar a cnt_a si son en la misma direccion los movimientos, sino sumar tener en cuenta si no hay stack_b
+	return (cnt_bb);
 }
 
-static int	find_moves(t_stack *stack_a, t_stack *stack_b, int node, int bt)
+static int	find_moves(t_stack *stack_a, t_stack *stack_b, int node, int i)
 {
-	int	cnt_a;
-	int	cnt_b;
+	t_index	rev;
+	t_stack	*aux;
+	int		cnt_at;
+	int		cnt_ab;
 
-	cnt_a = -1;
-	while (bt == TOP && ++cnt_a < node)
-	{
-		if (stack_a->content < node)
-			break ;
+	cnt_at = 0;
+	cnt_ab = 1;
+	rev.target = ft_lstlast_stack(stack_a);
+	while (++cnt_at <= i && stack_a->content >= node)
 		stack_a = stack_a->next;
-	}
-	while (bt == BOT && ++cnt_a < node) //recorrer lista al revés
+	while (++cnt_ab <= i && rev.target->content >= node)
 	{
-		if (stack_a->content < node)
-			break ;
-		stack_a = stack_a->next;
+		aux = stack_a;
+		while (aux->next->content != rev.target->content)
+			aux = aux->next;
+		rev.target = aux->next;
 	}
-	cnt_b = find_moves_b(); //tener en cuenta que si a es 0 el numero es negativo!!
-	return (cnt_a - cnt_b + 1);
+	return (find_moves_b(stack_b, stack_a->content, cnt_at, cnt_ab)); //tener en cuenta que si a es 0 el numero es negativo!!
 }
 
 static void	find_best(t_stack **stack_a, t_stack **stack_b, int node)
@@ -45,7 +63,7 @@ static void	find_best(t_stack **stack_a, t_stack **stack_b, int node)
 	int bot;
 
 	top = find_moves(*stack_a, *stack_b, node, TOP);
-	bot = find_moves(*stack_a, *stack_b, node, BOT);
+	bot = find_moves(*stack_a, *stack_b, node, BOT); //deberia de devolver algo para saber como es mas optimo si top a top b, top a bot b...
 	if (top >= bot)
 	{
 
@@ -64,16 +82,16 @@ static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int i, int j)
 	int	cnt;
 
 	chunk = -1;
-	node = i;
+	node = 0;
 	cnt = 0;
 	while (++chunk < (j - 1))
 	{
+		node += i;
 		while (cnt++ < node)
 		{
 			find_best(stack_a, stack_b, node);
 		}
-		node += i;
-	}
+	} //faltaria el ultimo nodo acordarse de marcar el menor y el mayor siempre en b
 }
 
 void	push_swap(t_stack **stack_a)
