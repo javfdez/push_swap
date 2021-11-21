@@ -6,56 +6,11 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/15 21:42:28 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/21 22:07:37 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
-static int	find_moves_b(t_stack *stack_b, int value)
-{
-	t_index	rev;
-	t_stack	*aux;
-	int		cnt_bt;
-	int		cnt_bb;
-	int		i;
-
-	i = ft_lstsize_stack(stack_b);
-	cnt_bt = -1;
-	while (++cnt_bt <= i && value < stack_b->content)
-		stack_b = stack_b->next;
-	while (++cnt_ab <= i && rev.target->content >= node)
-	{
-		aux = stack_a;
-		while (aux->next->content != rev.target->content)
-			aux = aux->next;
-		rev.target = aux->next;
-	}
-	if () //restar a cnt_a si son en la misma direccion los movimientos, sino sumar tener en cuenta si no hay stack_b
-	return (cnt_bb);
-}
-
-static int	find_moves(t_stack *stack_a, t_stack *stack_b, int node, int i)
-{
-	t_index	rev;
-	t_stack	*aux;
-	int		cnt_at;
-	int		cnt_ab;
-
-	cnt_at = 0;
-	cnt_ab = 1;
-	rev.target = ft_lstlast_stack(stack_a);
-	while (++cnt_at <= i && stack_a->content >= node)
-		stack_a = stack_a->next;
-	while (++cnt_ab <= i && rev.target->content >= node)
-	{
-		aux = stack_a;
-		while (aux->next->content != rev.target->content)
-			aux = aux->next;
-		rev.target = aux->next;
-	}
-	return (find_moves_b(stack_b, stack_a->content, cnt_at, cnt_ab)); //tener en cuenta que si a es 0 el numero es negativo!!
-}
 
 static void	find_best(t_stack **stack_a, t_stack **stack_b, int node)
 {

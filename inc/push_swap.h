@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/13 18:00:39 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/21 22:08:24 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void	ft_lstadd_front_stack(t_stack **lst, t_stack *new);
 void	ft_lstclear_stack(t_stack **lst);
 t_stack	*ft_lstlast_stack(t_stack *lst);
 t_stack	*ft_lstnew_stack(int content);
+int		find_moves(t_stack *stack_a, t_stack *stack_b, int node, int i);
 
 #endif
