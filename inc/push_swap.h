@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/21 22:08:24 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/22 21:16:52 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@
 # define RRR 8
 # define PA 9
 # define PB 10
-# define TOP 10
-# define BOT 10
+# define TOP 11
+# define BOT 12
+# define TOPATOPB 13
+# define TOPABOTB 14
+# define BOTATOPB 15
+# define BOTABOTB 16
 
 # include <libft.h>
 # include <unistd.h>
@@ -47,6 +51,12 @@ typedef struct s_index
 	t_stack	*target;
 	t_stack	*next;
 }	t_index;
+
+typedef struct s_maxmin
+{
+	int	max;
+	int	min;
+}	t_maxmin;
 
 void	error_end(void);
 void	free_inputs(char **inputs);

@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/21 22:07:37 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/22 21:46:09 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 static void	find_best(t_stack **stack_a, t_stack **stack_b, int node)
 {
-	int	top;
-	int bot;
+	int moves;
 
-	top = find_moves(*stack_a, *stack_b, node, TOP);
-	bot = find_moves(*stack_a, *stack_b, node, BOT); //deberia de devolver algo para saber como es mas optimo si top a top b, top a bot b...
+	moves = find_moves(*stack_a, *stack_b, node, BOT); //deberia de devolver algo para saber como es mas optimo si top a top b, top a bot b...
 	if (top >= bot)
 	{
 
@@ -58,7 +56,7 @@ void	push_swap(t_stack **stack_a)
 	i = ft_lstsize_stack(*stack_a);
 	index_stack(stack_a, i);
 	j = (3 * i + 700) / 200;
-	i /= j;
+	i /= j
 	first_chunks(stack_a, &stack_b, i, j);
 	last_chunk();
 
