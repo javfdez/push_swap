@@ -12,7 +12,7 @@
 
 #include <push_swap.h>
 
-static int	compare_counters(int a, int btop, int bbot, int *moves)
+static int	compare_counters(int a, int btop, int bbot, int *moves) //hacer esta funcion
 {
 
 }
@@ -109,7 +109,7 @@ static int	find_moves_b(t_stack *stack_b, int value, int cnt, int *moves)
 	}
 	btop = moves_b_top(stack_b, value, &maxmin);
 	bbot = moves_b_bot(stack_b, value, &maxmin);
-	return(compare_counters());
+	return(compare_counters()); //hacer esta funcion
 } //actualizar el * con los movimientos optimos y devolver el contador
 // el puntero viene con el valor correspondiente a al movimiento realizado en a
 
