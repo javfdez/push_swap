@@ -56,7 +56,7 @@ void	push_swap(t_stack **stack_a)
 	i = ft_lstsize_stack(*stack_a);
 	index_stack(stack_a, i);
 	j = (3 * i + 700) / 200;
-	i /= j
+	i /= j;
 	first_chunks(stack_a, &stack_b, i, j);
 	last_chunk();
 
