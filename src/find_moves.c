@@ -12,6 +12,11 @@
 
 #include <push_swap.h>
 
+static int	compare_counters(int a, int btop, int bbot, int *moves)
+{
+
+}
+
 static void init_maxmin(int value, int content, t_maxmin *maxmin)
 {
 	if (value > stack_b->content)
@@ -28,17 +33,40 @@ static void init_maxmin(int value, int content, t_maxmin *maxmin)
 
 static int moves_b_bot(t_stack *stack_b, int value, t_maxmin *maxmin)
 {
-	t_index	rev;
+	t_stack	*rev;
 	t_stack	*aux;
-	int		cnt_bb;
+	int		bbot;
 
-	cnt_bb = -1;
-	rev.target = ft_lstlast_stack(stack_b);
-	while (++cnt_bb)
+	bbot = -1;
+	rev = ft_lstlast_stack(stack_b);
+	while (++bbot)
 	{
 		aux = stack_b;
-		while (aux->next->content != rev.target->content)
+		while (aux->next->content != rev->content)
 			aux = aux->next;
+		if (aux->content == maxmin->max)//ver si se haría con aux o con rev
+		{
+			if (value > maxmin->max)
+				maxmin->max = value;
+			if (value < maxmin->min)
+				maxmin->min = value;
+			if (value == maxmin->min || value == maxmin->max)
+				break;
+		}
+		if (rev->content < value && aux->content > value)
+			break;
+		rev = aux;
+	}
+	return (bbot);
+}
+
+static int moves_b_top(t_stack *stack_b, int value, t_maxmin *maxmin)
+{
+	int	btop;
+
+	btop = -1;
+	while (++btop)
+	{
 		if (stack_b->content == maxmin->max)
 		{
 			if (value > maxmin->max)
@@ -48,42 +76,18 @@ static int moves_b_bot(t_stack *stack_b, int value, t_maxmin *maxmin)
 			if (value == maxmin->min || value == maxmin->max)
 				break;
 		}
-		if (rev.target->content < value && aux->next->content > value)
-			break;
-		rev.target = aux->next;
-	}
-	return (cnt_bb);
-}
-
-static int moves_b_top(t_stack *stack_b, int value, t_maxmin *maxmin)
-{
-	int	cnt_bt;
-
-	cnt_bt = -1;
-	while (++cnt_bt)
-	{
-		if (value > maxmin->max && stack_b->content == maxmin->max)
-		{
-			maxmin->max = value;
-			break;
-		}
-		if (value < maxmin->min && stack_b->content == maxmin->max)
-		{
-			maxmin->min = value;
-			break;
-		}
 		if (stack_b->content > value && stack_b->next->content < value)
 			break;
 		stack_b = stack_b->next;
 	}
-	return (cnt_bb); //acortar
+	return (bbot);
 }
 
 static int	find_moves_b(t_stack *stack_b, int value, int cnt, int *moves)
 {
 	static t_maxmin	maxmin;
-	int		cnt_bt;
-	int		cnt_bb;
+	int		btop;
+	int		bbot;
 
 	if ((!stack_b || (stack_b->content < value
 		&& ft_lstlast_stack(stack_b)->content > value)))
@@ -103,46 +107,46 @@ static int	find_moves_b(t_stack *stack_b, int value, int cnt, int *moves)
 			*moves = BOTATOPB;
 		return(cnt);
 	}
-	cnt_bt = moves_b_top(stack_b, value, &maxmin);
-	cnt_bb = moves_b_bot(stack_b, value, &maxmin);
+	btop = moves_b_top(stack_b, value, &maxmin);
+	bbot = moves_b_bot(stack_b, value, &maxmin);
 	return(compare_counters());
 } //actualizar el * con los movimientos optimos y devolver el contador
 // el puntero viene con el valor correspondiente a al movimiento realizado en a
 
-static int	stack_a_rev(t_stack *stack_a, int node, t_index *rev)
+static int	stack_a_rev(t_stack *stack_a, int node, t_stack **rev)
 {
 	t_stack	*aux;
-	int		cnt_ab;
+	int		abot;
 
-	cnt_ab = 1;
-	while (++cnt_ab && rev->target->content >= node)
+	abot = 1;
+	while (++abot && *rev->content >= node)
 	{
 		aux = stack_a;
-		while (aux->next->content != rev->target->content)
+		while (aux->next->content != *rev->content)
 			aux = aux->next;
-		rev->target = aux->next;
+		*rev = aux;
 	}
-	return (cnt_ab);
+	return (abot);
 }
 
 int	find_moves(t_stack *stack_a, t_stack *stack_b, int node)
 {
-	t_index	rev;
-	int		cnt_at;
-	int		cnt_ab;
+	t_stack	*rev;
+	int		atop;
+	int		abot;
 	int 	atopb;
 	int		abotb;
 
-	cnt_at = 0;
+	atop = 0;
 	atopb = TOP;
 	abotb = BOT;
-	rev.target = ft_lstlast_stack(stack_a);
-	while (++cnt_at && stack_a->content >= node)
+	rev = ft_lstlast_stack(stack_a);
+	while (++atop && stack_a->content >= node)
 		stack_a = stack_a->next;
-	cnt_ab = stack_a_rev(stack_a, node, &rev);
-	cnt_at = find_moves_b(stack_b, stack_a->content, cnt_at, &atopb);
-	cnt_ab = find_moves_b(stack_b, rev.target->content, cnt_ab, &abotb);
-	if (cnt_at <= cnt_ab)
+	abot = stack_a_rev(stack_a, node, &rev);
+	atop = find_moves_b(stack_b, stack_a->content, atop, &atopb);
+	abot = find_moves_b(stack_b, rev.target->content, abot, &abotb);
+	if (atop <= abot)
 		return(atopb);
 	return(abotb);
 }
