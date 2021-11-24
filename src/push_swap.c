@@ -6,26 +6,32 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/22 21:46:09 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/24 12:23:28 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static void	find_best(t_stack **stack_a, t_stack **stack_b, int node)
+static int	find_best_moves(t_stack *stack_a, t_stack *stack_b, int node)
 {
-	int moves;
+	t_stack	*rev;
+	int		atop;
+	int		abot;
+	int		atopb;
+	int		abotb;
 
-	moves = find_moves(*stack_a, *stack_b, node, BOT); //deberia de devolver algo para saber como es mas optimo si top a top b, top a bot b...
-	if (top >= bot)
-	{
-
-	}
-	else
-	{
-
-	}
-
+	rev = ft_lstlast_stack(stack_a);
+	abot = stack_a_rev(stack_a, node, &rev);
+	atop = 0;
+	while (++atop && stack_a->content >= node)
+		stack_a = stack_a->next;
+	atopb = TOP;
+	abotb = BOT;
+	atop = find_moves_b(stack_b, stack_a->content, atop, &atopb);
+	abot = find_moves_b(stack_b, rev.target->content, abot, &abotb);
+	if (atop <= abot)
+		return (atopb);
+	return (abotb);
 }
 
 static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int i, int j)
@@ -33,6 +39,7 @@ static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int i, int j)
 	int	chunk;
 	int	node;
 	int	cnt;
+	int	moves;
 
 	chunk = -1;
 	node = 0;
@@ -42,22 +49,21 @@ static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int i, int j)
 		node += i;
 		while (cnt++ < node)
 		{
-			find_best(stack_a, stack_b, node);
+			moves = find_best_moves(stack_a, stack_b, node);
 		}
-	} //faltaria el ultimo nodo acordarse de marcar el menor y el mayor siempre en b
+	}
 }
 
 void	push_swap(t_stack **stack_a)
 {
 	int		i;
 	int		j;
-	t_stack *stack_b;
+	t_stack	*stack_b;
 
 	i = ft_lstsize_stack(*stack_a);
 	index_stack(stack_a, i);
 	j = (3 * i + 700) / 200;
 	i /= j;
 	first_chunks(stack_a, &stack_b, i, j);
-	last_chunk();
-
+	last_chunk(); //faltaria el ultimo nodo
 }
