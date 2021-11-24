@@ -6,11 +6,25 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/24 16:10:44 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/24 18:26:49 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+static void	do_moves(t_stack **stack_a, t_stack **stack_b, int node, int moves)
+{
+	static t_maxmin	mm;
+
+	if (moves == TOPATOPB)
+		topatopb(stack_a, stack_b, node, &mm);
+	if (moves == TOPABOTB)
+		topabotb(stack_a, stack_b, node, &mm);
+	if (moves == BOTATOPB)
+		botatopb(stack_a, stack_b, node, &mm);
+	if (moves == BOTABOTB)
+		botabotb(stack_a, stack_b, node, &mm);
+}
 
 static int	find_best_moves(t_stack *stack_a, t_stack *stack_b, int node)
 {
@@ -21,8 +35,8 @@ static int	find_best_moves(t_stack *stack_a, t_stack *stack_b, int node)
 	int		abotb;
 
 	rev = ft_lstlast_stack(stack_a);
-	abot = stack_a_rev(stack_a, node, &rev);
-	atop = 0;
+	abot = moves_a_bot(stack_a, node, &rev);
+	atop = -1;
 	while (++atop && stack_a->content >= node)
 		stack_a = stack_a->next;
 	atopb = TOP;
@@ -50,14 +64,7 @@ static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int size, int bl)
 		while (cnt++ < node)
 		{
 			moves = find_best_moves(*stack_a, *stack_b, node);
-			if (moves == TOPATOPB)
-				top_a_top_b(stack_a, stack_b, node);
-			if (moves == TOPABOTB)
-				top_a_bot_b(stack_a, stack_b, node);
-			if (moves == BOTATOPB)
-				bot_a_top_b(stack_a, stack_b, node);
-			if (moves == BOTABOTB)
-				bot_a_bot_b(stack_a, stack_b, node);
+			do_moves(stack_a, stack_b, node, moves);
 		}
 	}
 }

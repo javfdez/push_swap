@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/24 16:26:54 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/24 18:34:20 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,12 @@ void	ft_lstadd_front_stack(t_stack **lst, t_stack *new);
 void	ft_lstclear_stack(t_stack **lst);
 t_stack	*ft_lstlast_stack(t_stack *lst);
 t_stack	*ft_lstnew_stack(int content);
-int		stack_a_rev(t_stack *stack_a, int node, t_stack **rev);
 int		find_moves_b(t_stack *stack_b, int value, int cnt, int *moves);
-void	top_a_top_b(t_stack **stack_a, t_stack **stack_b, int node);
+int		moves_a_top(t_stack *stack_a, int node, int *value);
+int		moves_a_bot(t_stack *stack_a, int node, t_stack **rev);
+int		moves_b_top(t_stack *stack_b, int value, t_maxmin *maxmin);
+int		counter_empty_b(t_stack *stack_b, t_maxmin *mm, int value);
+void	init_maxmin(int value, int content, t_maxmin *maxmin);
+void	topatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm);
 
 #endif
