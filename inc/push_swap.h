@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/24 14:00:31 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:26:54 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ t_stack	*ft_lstlast_stack(t_stack *lst);
 t_stack	*ft_lstnew_stack(int content);
 int		stack_a_rev(t_stack *stack_a, int node, t_stack **rev);
 int		find_moves_b(t_stack *stack_b, int value, int cnt, int *moves);
+void	top_a_top_b(t_stack **stack_a, t_stack **stack_b, int node);
 
 #endif

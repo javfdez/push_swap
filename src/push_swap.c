@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/24 14:04:12 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:10:44 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	find_best_moves(t_stack *stack_a, t_stack *stack_b, int node)
 	return (abotb);
 }
 
-static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int i, int j)
+static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int size, int bl)
 {
 	int	chunk;
 	int	node;
@@ -44,34 +44,40 @@ static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int i, int j)
 	chunk = -1;
 	node = 0;
 	cnt = 0;
-	while (++chunk < (j - 1))
+	while (++chunk < (bl - 1))
 	{
-		node += i;
+		node += size;
 		while (cnt++ < node)
 		{
 			moves = find_best_moves(*stack_a, *stack_b, node);
+			if (moves == TOPATOPB)
+				top_a_top_b(stack_a, stack_b, node);
+			if (moves == TOPABOTB)
+				top_a_bot_b(stack_a, stack_b, node);
+			if (moves == BOTATOPB)
+				bot_a_top_b(stack_a, stack_b, node);
+			if (moves == BOTABOTB)
+				bot_a_bot_b(stack_a, stack_b, node);
 		}
 	}
-
 }
 
 void	push_swap(t_stack **stack_a)
 {
-	int		i;
-	int		j;
+	int		size;
+	int		bl;
 	t_stack	*stack_b;
 
 	stack_b = NULL;
-	i = ft_lstsize_stack(*stack_a);
-	index_stack(stack_a, i);
-	if (i >= 100)
+	size = ft_lstsize_stack(*stack_a);
+	index_stack(stack_a, size);
+	if (size >= 100)
 	{
-		j = (3 * i + 700) / 200;
-		i /= j;
-		first_chunks(stack_a, &stack_b, i, j);
+		bl = (3 * size + 700) / 200;
+		size /= bl;
+		first_chunks(stack_a, &stack_b, size, bl);
 		//last_chunk(); //faltaria el ultimo nodo
 	}
 	else // tener en cuenta si me mandan un solo numero o 2 o más pero que ya estén ordenados
-		first_chunks(stack_a, &stack_b, i, ONECHUNK);
-
+		first_chunks(stack_a, &stack_b, size, ONECHUNK);
 }
