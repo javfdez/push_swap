@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/24 12:23:28 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:04:12 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	find_best_moves(t_stack *stack_a, t_stack *stack_b, int node)
 	atopb = TOP;
 	abotb = BOT;
 	atop = find_moves_b(stack_b, stack_a->content, atop, &atopb);
-	abot = find_moves_b(stack_b, rev.target->content, abot, &abotb);
+	abot = find_moves_b(stack_b, rev->content, abot, &abotb);
 	if (atop <= abot)
 		return (atopb);
 	return (abotb);
@@ -49,9 +49,10 @@ static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int i, int j)
 		node += i;
 		while (cnt++ < node)
 		{
-			moves = find_best_moves(stack_a, stack_b, node);
+			moves = find_best_moves(*stack_a, *stack_b, node);
 		}
 	}
+
 }
 
 void	push_swap(t_stack **stack_a)
@@ -60,10 +61,17 @@ void	push_swap(t_stack **stack_a)
 	int		j;
 	t_stack	*stack_b;
 
+	stack_b = NULL;
 	i = ft_lstsize_stack(*stack_a);
 	index_stack(stack_a, i);
-	j = (3 * i + 700) / 200;
-	i /= j;
-	first_chunks(stack_a, &stack_b, i, j);
-	last_chunk(); //faltaria el ultimo nodo
+	if (i >= 100)
+	{
+		j = (3 * i + 700) / 200;
+		i /= j;
+		first_chunks(stack_a, &stack_b, i, j);
+		//last_chunk(); //faltaria el ultimo nodo
+	}
+	else // tener en cuenta si me mandan un solo numero o 2 o más pero que ya estén ordenados
+		first_chunks(stack_a, &stack_b, i, ONECHUNK);
+
 }

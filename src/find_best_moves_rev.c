@@ -18,10 +18,10 @@ int	stack_a_rev(t_stack *stack_a, int node, t_stack **rev)
 	int		abot;
 
 	abot = 1;
-	while (++abot && *rev->content >= node)
+	while (++abot && (*rev)->content >= node)
 	{
 		aux = stack_a;
-		while (aux->next->content != *rev->content)
+		while (aux->next->content != (*rev)->content)
 			aux = aux->next;
 		*rev = aux;
 	}

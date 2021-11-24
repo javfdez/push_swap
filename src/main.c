@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:57:47 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/09 16:41:18 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/24 13:36:14 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 	char	**inputs;
 	t_stack	*stack_a;
 
+	stack_a = NULL;
 	i = -1;
 	if (argc > 1)
 		i = 0;

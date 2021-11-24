@@ -41,14 +41,14 @@ static int	compare_counters(int a, int btop, int bbot, int *moves)
 
 static void	init_maxmin(int value, int content, t_maxmin *maxmin)
 {
-	if (value > stack_b->content)
+	if (value > content)
 	{
 		maxmin->max = value;
-		maxmin->min = stack_b->content;
+		maxmin->min = content;
 	}
 	else
 	{
-		maxmin->max = stack_b->content;
+		maxmin->max = content;
 		maxmin->min = value;
 	}
 }
@@ -102,7 +102,7 @@ static int	moves_b_top(t_stack *stack_b, int value, t_maxmin *maxmin)
 			break ;
 		stack_b = stack_b->next;
 	}
-	return (bbot);
+	return (btop);
 }
 
 int	find_moves_b(t_stack *stack_b, int value, int cnt, int *moves)
@@ -122,7 +122,7 @@ int	find_moves_b(t_stack *stack_b, int value, int cnt, int *moves)
 	}
 	if (!stack_b->next)
 	{
-		maxmin = init_maxmin(value, stack_b->content, &maxmin);
+		init_maxmin(value, stack_b->content, &maxmin);
 		if (*moves == TOP)
 			*moves = TOPATOPB;
 		if (*moves == BOT)

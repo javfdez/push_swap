@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/24 12:20:39 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:00:31 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define TOPABOTB 14
 # define BOTATOPB 15
 # define BOTABOTB 16
+# define ONECHUNK 2
 
 # include <libft.h>
 # include <unistd.h>
