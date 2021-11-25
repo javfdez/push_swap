@@ -84,8 +84,12 @@ int		find_moves_b(t_stack *stack_b, int value, int cnt, int *moves);
 int		moves_a_top(t_stack *stack_a, int node, int *value);
 int		moves_a_bot(t_stack *stack_a, int node, t_stack **rev);
 int		moves_b_top(t_stack *stack_b, int value, t_maxmin *maxmin);
+int		moves_b_bot(t_stack *stack_b, int value, t_maxmin *maxmin)
 int		counter_empty_b(t_stack *stack_b, t_maxmin *mm, int value);
 void	init_maxmin(int value, int content, t_maxmin *maxmin);
 void	topatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm);
+void	topabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm);
+void	botatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm);
+void	botabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm);
 
 #endif

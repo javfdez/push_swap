@@ -16,26 +16,23 @@ static int	do_rotate(t_stack **stack)
 {
 	t_stack	aux;
 
-	if (!stack || !*stack)
-		return (0);
 	aux.next = *stack;
 	ft_lstadd_back_stack(stack, ft_lstnew_stack((*stack)->content));
 	*stack = (*stack)->next;
 	free(aux.next);
-	return (1);
 }
 
 void	rotate(t_stack **stack_a, t_stack **stack_b, int ab)
 {
 	if (ab == RA)
 	{
-		if (do_rotate(stack_a));
-			write(1, "ra\n", 3);
+		do_rotate(stack_a);
+		write(1, "ra\n", 3);
 	}
 	if (ab == RB)
 	{
-		if (do_rotate(stack_b));
-			write(1, "rb\n", 3);
+		do_rotate(stack_b);
+		write(1, "rb\n", 3);
 	}
 	if (ab == RR)
 	{

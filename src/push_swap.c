@@ -35,7 +35,7 @@ static int	find_best_moves(t_stack *stack_a, t_stack *stack_b, int node)
 	int		abotb;
 
 	rev = ft_lstlast_stack(stack_a);
-	abot = moves_a_bot(stack_a, node, &rev);
+	abot = moves_a_bot(stack_a, node, &rev, NULL);
 	atop = -1;
 	while (++atop && stack_a->content >= node)
 		stack_a = stack_a->next;
@@ -65,7 +65,7 @@ static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int size, int bl)
 		{
 			moves = find_best_moves(*stack_a, *stack_b, node);
 			do_moves(stack_a, stack_b, node, moves);
-		}
+		} // falta ordenar el stack b y hacer los pa
 	}
 }
 

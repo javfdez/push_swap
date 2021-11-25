@@ -20,7 +20,8 @@ SRC	= $(addprefix $(SRC_DIR),	\
 		parse.c					\
 		index_stack.c			\
 		find_moves_b.c			\
-		find_moves_a.c	\
+		find_moves_a.c			\
+		do_moves.c				\
 		push_swap.c)
 
 UTILS = $(addprefix $(UTILS_DIR),	\
@@ -30,6 +31,7 @@ UTILS = $(addprefix $(UTILS_DIR),	\
 		swap.c						\
 		rotate.c					\
 		push.c						\
+		counter_empty_b.c			\
 		list_stack.c				\
 		list_stack_2.c)
 

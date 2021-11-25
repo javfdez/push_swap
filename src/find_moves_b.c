@@ -39,7 +39,7 @@ static int	compare_counters(int a, int btop, int bbot, int *moves)
 	return (bbot);
 }
 
-static int	moves_b_bot(t_stack *stack_b, int value, t_maxmin *maxmin)
+int	moves_b_bot(t_stack *stack_b, int value, t_maxmin *maxmin)
 {
 	t_stack	*rev;
 	t_stack	*aux;
