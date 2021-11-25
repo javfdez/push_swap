@@ -52,17 +52,14 @@ static int	moves_b_bot(t_stack *stack_b, int value, t_maxmin *maxmin)
 		aux = stack_b;
 		while (aux->next->content != rev->content)
 			aux = aux->next;
-		if (rev->content == maxmin->max)
+		if (rev->content == maxmin->max && value > maxmin->max)
+			maxmin->max = value;
+		else if (rev->content == maxmin->max && value < maxmin->min)
+			maxmin->min = value;
+		if (value == maxmin->min || value == maxmin->max)
 		{
-			if (value > maxmin->max)
-				maxmin->max = value;
-			if (value < maxmin->min)
-				maxmin->min = value;
-			if (value == maxmin->min || value == maxmin->max)
-			{
-				bbot--;
-				break ;
-			}
+			bbot--;
+			break ;
 		}
 		if (rev->content < value && aux->content > value)
 			break ;
