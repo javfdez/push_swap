@@ -59,7 +59,10 @@ static int	moves_b_bot(t_stack *stack_b, int value, t_maxmin *maxmin)
 			if (value < maxmin->min)
 				maxmin->min = value;
 			if (value == maxmin->min || value == maxmin->max)
+			{
+				bbot--;
 				break ;
+			}
 		}
 		if (rev->content < value && aux->content > value)
 			break ;
@@ -82,7 +85,10 @@ int	moves_b_top(t_stack *stack_b, int value, t_maxmin *maxmin)
 			if (value < maxmin->min)
 				maxmin->min = value;
 			if (value == maxmin->min || value == maxmin->max)
+			{
+				btop--;
 				break ;
+			}
 		}
 		if (stack_b->content > value && stack_b->next->content < value)
 			break ;
