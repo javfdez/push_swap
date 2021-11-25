@@ -21,15 +21,12 @@ void	topatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm)
 	atop = moves_a_top(*stack_a, node, &value);
 	btop = 0;
 	if (counter_empty_b(stack_b, mm, value))
-		btop = moves_b_top(*stack_b, mm, value); //mirar esta función y la bot porque si el content es el max y el value es mayor y estamos al comienzo del stack el cnt tiene que quedarse en 0 no en 1
-	while (atop > 0 && btop > 0)
-	{
+		btop = moves_b_top(*stack_b, mm, value);
+	while (atop-- > 0 && btop-- > 0)
 		rotate(stack_a, stack_b, RR);
-		atop--;
-		btop--;
-	}
-	while (atop > 0)
-	{
-
-	}
-}
+	while (atop-- > 0)
+		rotate(stack_a, NULL, RA);
+	while (btop-- > 0)
+		rotate(NULL, stack_b, RB);
+	push(stack_b, stack_a, PB);
+} //tener en cuenta que si el stack está vacio (tanto a como b) o solo tiene un nodo, que haría el programa?
