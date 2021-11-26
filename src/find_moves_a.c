@@ -19,7 +19,7 @@ int	moves_a_top(t_stack *stack_a, int node, int *value)
 	if (!stack_a->next) //?
 	{
 		*value = stack_a->content;
-		return (0)
+		return (0);
 	}
 	atop = -1;
 	while (++atop && stack_a->content >= node)
@@ -34,7 +34,7 @@ int	moves_a_bot(t_stack *stack_a, int node, t_stack **rev, int *value)
 	int		abot;
 
 	if (!stack_a || !stack_a->next) //?
-		return (0)
+		return (0);
 	abot = 0;
 	while (++abot && (*rev)->content >= node)
 	{
