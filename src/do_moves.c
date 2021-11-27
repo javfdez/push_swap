@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:25:31 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/26 11:40:15 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/27 12:36:06 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	botabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm)
 	int	bbot;
 	int value;
 
-	rev = ft_lstlast_stack(stack_a);
+	rev = ft_lstlast_stack(*stack_a);
 	abot = moves_a_bot(*stack_a, node, &rev, &value);
 	bbot = 0;
-	if (counter_empty_b(stack_b, mm, value))
+	if (counter_empty_b(*stack_b, mm, value))
 		bbot = moves_b_bot(*stack_b, value, mm);
 	while (abot-- > 0 && bbot-- > 0)
 		rotate(stack_a, stack_b, RR);
@@ -40,10 +40,10 @@ void	botatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm)
 	int	btop;
 	int value;
 
-	rev = ft_lstlast_stack(stack_a);
+	rev = ft_lstlast_stack(*stack_a);
 	abot = moves_a_bot(*stack_a, node, &rev, &value);
 	btop = 0;
-	if (counter_empty_b(stack_b, mm, value))
+	if (counter_empty_b(*stack_b, mm, value))
 		btop = moves_b_top(*stack_b, value, mm);
 	while (abot-- > 0 && btop-- > 0)
 		rotate(stack_a, stack_b, RR);
@@ -62,7 +62,7 @@ void	topabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm)
 
 	atop = moves_a_top(*stack_a, node, &value);
 	bbot = 0;
-	if (counter_empty_b(stack_b, mm, value))
+	if (counter_empty_b(*stack_b, mm, value))
 		bbot = moves_b_bot(*stack_b, value, mm);
 	while (atop-- > 0 && bbot-- > 0)
 		rotate(stack_a, stack_b, RR);
@@ -81,7 +81,7 @@ void	topatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm)
 
 	atop = moves_a_top(*stack_a, node, &value);
 	btop = 0;
-	if (counter_empty_b(stack_b, mm, value))
+	if (counter_empty_b(*stack_b, mm, value))
 		btop = moves_b_top(*stack_b, value, mm);
 	while (atop-- > 0 && btop-- > 0)
 		rotate(stack_a, stack_b, RR);

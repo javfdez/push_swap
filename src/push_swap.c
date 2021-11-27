@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/24 18:26:49 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/27 13:35:24 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ static int	find_best_moves(t_stack *stack_a, t_stack *stack_b, int node)
 
 static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int size, int bl)
 {
-	int	chunk;
-	int	node;
-	int	cnt;
-	int	moves;
+	int			chunk;
+	int			node;
+	int			cnt;
+	int			moves;
 
 	chunk = -1;
 	node = 0;
@@ -83,8 +83,9 @@ void	push_swap(t_stack **stack_a)
 		bl = (3 * size + 700) / 200;
 		size /= bl;
 		first_chunks(stack_a, &stack_b, size, bl);
-		//last_chunk(); //faltaria el ultimo nodo
+		//last_chunk(); //faltaria el ultimo nodo // falta que no mueva los que están organizados
 	}
 	else // tener en cuenta si me mandan un solo numero o 2 o más pero que ya estén ordenados
 		first_chunks(stack_a, &stack_b, size, ONECHUNK);
+	ft_lstclear_stack(&stack_b);
 }

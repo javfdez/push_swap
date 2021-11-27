@@ -6,13 +6,13 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:40:11 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/09 17:40:37 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/27 12:37:09 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static int	do_rotate(t_stack **stack)
+static void	do_rotate(t_stack **stack)
 {
 	t_stack	aux;
 
