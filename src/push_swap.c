@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/27 13:35:24 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/29 20:26:36 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 static void	do_moves(t_stack **stack_a, t_stack **stack_b, int node, int moves)
 {
-	static t_maxmin	mm;
-
 	if (moves == TOPATOPB)
-		topatopb(stack_a, stack_b, node, &mm);
+		topatopb(stack_a, stack_b, node, maxmin_update_check(0, 0, CHECK));
 	if (moves == TOPABOTB)
-		topabotb(stack_a, stack_b, node, &mm);
+		topabotb(stack_a, stack_b, node, maxmin_update_check(0, 0, CHECK));
 	if (moves == BOTATOPB)
-		botatopb(stack_a, stack_b, node, &mm);
+		botatopb(stack_a, stack_b, node, maxmin_update_check(0, 0, CHECK));
 	if (moves == BOTABOTB)
-		botabotb(stack_a, stack_b, node, &mm);
+		botabotb(stack_a, stack_b, node, maxmin_update_check(0, 0, CHECK));
 }
 
 static int	find_best_moves(t_stack *stack_a, t_stack *stack_b, int node)

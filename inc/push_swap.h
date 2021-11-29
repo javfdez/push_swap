@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/27 13:48:29 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/29 20:08:58 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
 # define MAX_LINE 2048
-# define EMPTY 0
 # define SA 0
 # define SB 1
 # define SS 2
@@ -35,6 +34,7 @@
 # define BOTABOTB 16
 # define CHECK 17
 # define UPDATE 18
+# define CREATE 19
 # define ONECHUNK 2
 
 # include <libft.h>
@@ -86,14 +86,13 @@ t_stack		*ft_lstnew_stack(int content);
 int			find_moves_b(t_stack *stack_b, int value, int cnt, int *moves);
 int			moves_a_top(t_stack *stack_a, int node, int *value);
 int			moves_a_bot(t_stack *stack_a, int node, t_stack **rev, int *value);
-int			moves_b_top(t_stack *stack_b, int value, t_maxmin *maxmin);
-int			moves_b_bot(t_stack *stack_b, int value, t_maxmin *maxmin);
-int			counter_empty_b(t_stack *stack_b, t_maxmin *mm, int value);
-t_maxmin	maxmin_up_check(int value, int content, int cu);
-void		init_maxmin(int value, int content, t_maxmin *maxmin);
-void		topatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm);
-void		topabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm);
-void		botatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm);
-void		botabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin *mm);
+int			moves_b_top(t_stack *stack_b, int value, t_maxmin maxmin, int check);
+int			moves_b_bot(t_stack *stack_b, int value, t_maxmin maxmin, int check);
+int			counter_empty_b(t_stack *stack_b, int value);
+t_maxmin	maxmin_update_check(int value, int content, int cu);
+void		topatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
+void		topabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
+void		botatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
+void		botabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
 
 #endif

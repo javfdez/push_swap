@@ -39,7 +39,7 @@ static int	compare_counters(int a, int btop, int bbot, int *moves)
 	return (bbot);
 }
 
-int	moves_b_bot(t_stack *stack_b, int value, t_maxmin *maxmin)
+int	moves_b_bot(t_stack *stack_b, int value, t_maxmin maxmin, int check)
 {
 	t_stack	*rev;
 	t_stack	*aux;
@@ -49,18 +49,16 @@ int	moves_b_bot(t_stack *stack_b, int value, t_maxmin *maxmin)
 	rev = ft_lstlast_stack(stack_b);
 	while (++bbot)
 	{
+		if (rev->content == maxmin.max
+			&& (value > maxmin.max || value < maxmin.min))
+		{
+			if (check == UPDATE)
+				maxmin_update_check(value, 0, UPDATE);
+			break ;
+		}
 		aux = stack_b;
 		while (aux->next->content != rev->content)
 			aux = aux->next;
-		if (rev->content == maxmin->max && value > maxmin->max)
-			maxmin->max = value;
-		else if (rev->content == maxmin->max && value < maxmin->min)
-			maxmin->min = value;
-		if (value == maxmin->min || value == maxmin->max)
-		{
-			bbot--;
-			break ;
-		}
 		if (rev->content < value && aux->content > value)
 			break ;
 		rev = aux;
@@ -68,24 +66,20 @@ int	moves_b_bot(t_stack *stack_b, int value, t_maxmin *maxmin)
 	return (bbot);
 }
 
-int	moves_b_top(t_stack *stack_b, int value, t_maxmin *maxmin)
+int	moves_b_top(t_stack *stack_b, int value, t_maxmin maxmin, int check)
 {
 	int	btop;
 
 	btop = 0;
 	while (++btop)
 	{
-		if (stack_b->content == maxmin->max) //change this
+		if (stack_b->content == maxmin.max
+			&& (value > maxmin.max || value < maxmin.min))
 		{
-			if (value > maxmin->max)
-				maxmin->max = value;
-			if (value < maxmin->min)
-				maxmin->min = value;
-			if (value == maxmin->min || value == maxmin->max)
-			{
-				btop--;
-				break ;
-			}
+			if (check == UPDATE)
+				maxmin_update_check(value, 0, UPDATE);
+			btop--;
+			break ;
 		}
 		if (stack_b->content > value && stack_b->next->content < value)
 			break ;
@@ -96,11 +90,10 @@ int	moves_b_top(t_stack *stack_b, int value, t_maxmin *maxmin)
 
 int	find_moves_b(t_stack *stack_b, int value, int cnt, int *moves)
 {
-	//static t_maxmin	maxmin;
-	int				btop;
-	int				bbot;
+	int	btop;
+	int	bbot;
 
-	if (!stack_b || (stack_b->content < value
+	if (!stack_b || !stack_b->next || (stack_b->content < value
 			&& ft_lstlast_stack(stack_b)->content > value))
 	{
 		if (*moves == TOP)
@@ -109,16 +102,7 @@ int	find_moves_b(t_stack *stack_b, int value, int cnt, int *moves)
 			*moves = BOTATOPB;
 		return (cnt);
 	}
-	if (!stack_b->next)
-	{
-		//init_maxmin(value, stack_b->content, &maxmin);
-		if (*moves == TOP)
-			*moves = TOPATOPB;
-		if (*moves == BOT)
-			*moves = BOTATOPB;
-		return (cnt);
-	}
-	btop = moves_b_top(stack_b, value, maxmin_up_check(EMPTY, EMPTY, CHECK));
-	bbot = moves_b_bot(stack_b, value, maxmin_up_check(EMPTY, EMPTY, CHECK));
+	btop = moves_b_top(stack_b, value, maxmin_update_check(0, 0, CHECK), CHECK);
+	bbot = moves_b_bot(stack_b, value, maxmin_update_check(0, 0, CHECK), CHECK);
 	return (compare_counters(cnt, btop, bbot, moves));
 }
