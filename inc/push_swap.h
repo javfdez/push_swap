@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/29 20:08:58 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/30 20:51:05 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,11 @@ int			moves_a_bot(t_stack *stack_a, int node, t_stack **rev, int *value);
 int			moves_b_top(t_stack *stack_b, int value, t_maxmin maxmin, int check);
 int			moves_b_bot(t_stack *stack_b, int value, t_maxmin maxmin, int check);
 int			counter_empty_b(t_stack *stack_b, int value);
-t_maxmin	maxmin_update_check(int value, int content, int cu);
+t_maxmin	maxmin_up_check(int value, int content, int cu);
 void		topatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
 void		topabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
 void		botatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
 void		botabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
+void		push_back(t_stack **stack_a, t_stack **stack_b);
 
 #endif

@@ -6,11 +6,20 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:57:47 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/24 13:36:14 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/30 20:15:54 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+/*static void	print_a(t_stack *stack_a)
+{
+	while (stack_a)
+	{
+		printf("content = %i\n", stack_a->content);
+		stack_a = stack_a->next;
+	}
+}*/
 
 int	main(int argc, char **argv)
 {
@@ -37,6 +46,7 @@ int	main(int argc, char **argv)
 	}
 	check_duplicates(stack_a);
 	push_swap(&stack_a);
+	//print_a(stack_a);
 	ft_lstclear_stack(&stack_a);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 17:29:02 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/29 20:08:58 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/30 19:24:33 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-t_maxmin maxmin_update_check(int value, int content, int cu)
+t_maxmin maxmin_up_check(int value, int content, int cu)
 {
 	static t_maxmin	maxmin;
 
@@ -46,7 +46,7 @@ int	counter_empty_b(t_stack *stack_b, int value)
 		return (0);
 	if (!stack_b->next)
 	{
-		maxmin_update_check(value, stack_b->content, CREATE);
+		maxmin_up_check(value, stack_b->content, CREATE);
 		return (0);
 	}
 	return (1);

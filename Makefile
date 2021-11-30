@@ -6,7 +6,7 @@
 #    By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 12:14:32 by javferna          #+#    #+#              #
-#    Updated: 2021/11/24 18:24:52 by javferna         ###   ########.fr        #
+#    Updated: 2021/11/30 19:58:27 by javferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC	= $(addprefix $(SRC_DIR),	\
 		find_moves_b.c			\
 		find_moves_a.c			\
 		do_moves.c				\
+		final_moves.c			\
 		push_swap.c)
 
 UTILS = $(addprefix $(UTILS_DIR),	\

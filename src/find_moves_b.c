@@ -53,7 +53,7 @@ int	moves_b_bot(t_stack *stack_b, int value, t_maxmin maxmin, int check)
 			&& (value > maxmin.max || value < maxmin.min))
 		{
 			if (check == UPDATE)
-				maxmin_update_check(value, 0, UPDATE);
+				maxmin_up_check(value, 0, UPDATE);
 			break ;
 		}
 		aux = stack_b;
@@ -77,7 +77,7 @@ int	moves_b_top(t_stack *stack_b, int value, t_maxmin maxmin, int check)
 			&& (value > maxmin.max || value < maxmin.min))
 		{
 			if (check == UPDATE)
-				maxmin_update_check(value, 0, UPDATE);
+				maxmin_up_check(value, 0, UPDATE);
 			btop--;
 			break ;
 		}
@@ -102,7 +102,7 @@ int	find_moves_b(t_stack *stack_b, int value, int cnt, int *moves)
 			*moves = BOTATOPB;
 		return (cnt);
 	}
-	btop = moves_b_top(stack_b, value, maxmin_update_check(0, 0, CHECK), CHECK);
-	bbot = moves_b_bot(stack_b, value, maxmin_update_check(0, 0, CHECK), CHECK);
+	btop = moves_b_top(stack_b, value, maxmin_up_check(0, 0, CHECK), CHECK);
+	bbot = moves_b_bot(stack_b, value, maxmin_up_check(0, 0, CHECK), CHECK);
 	return (compare_counters(cnt, btop, bbot, moves));
 }

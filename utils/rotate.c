@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:40:11 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/27 12:37:09 by javferna         ###   ########.fr       */
+/*   Updated: 2021/11/30 20:15:00 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,17 @@ void	r_rotate(t_stack **stack_a, t_stack **stack_b, int ab)
 	if (ab == RRA)
 	{
 		do_r_rotate(stack_a);
-		write(1, "rra\n", 3);
+		write(1, "rra\n", 4);
 	}
 	if (ab == RRB)
 	{
 		do_r_rotate(stack_b);
-		write(1, "rrb\n", 3);
+		write(1, "rrb\n", 4);
 	}
 	if (ab == RRR)
 	{
 		do_r_rotate(stack_a);
 		do_r_rotate(stack_b);
-		write(1, "rrr\n", 3);
+		write(1, "rrr\n", 4);
 	}
 }
