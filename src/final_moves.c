@@ -12,6 +12,12 @@
 
 #include <push_swap.h>
 
+void	just_rotate(t_stack **stack_a, int total_size)
+{
+	while(total_size-- > 0)
+		rotate(stack_a, NULL, RA);
+}
+
 static int	fm_top(t_stack *stack_b, int max)
 {
 	int	top;

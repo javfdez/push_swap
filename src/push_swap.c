@@ -70,9 +70,13 @@ static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int size, int bl)
 	}
 }
 
-static void	is_ordered(t_stack *stack_a)
+static void	is_ordered(t_stack *stack_a, int order)
 {
-	while (stack_a->next && stack_a->next->content - stack_a->content == 1)
+	while (order == ASCENDING && stack_a->next
+		&& stack_a->next->content - stack_a->content == 1)
+		stack_a = stack_a->next;
+	while (order == DESCENDING && stack_a->next
+		&& stack_a->content - stack_a->next->content == 1)
 		stack_a = stack_a->next;
 	if (!stack_a->next)
 		return (1);
@@ -89,8 +93,10 @@ void	push_swap(t_stack **stack_a)
 	stack_b = NULL;
 	total_size = ft_lstsize_stack(*stack_a);
 	index_stack(stack_a, total_size);
-	if (is_ordered(*stack_a))
+	if (is_ordered(*stack_a, ASCENDING))
 		return ;
+	if (is_ordered(*stack_a, DESCENDING))
+		just_rotate(stack_a, total_size);
 	if (total_size >= 100)
 	{
 		bl = (3 * total_size + 700) / 200;

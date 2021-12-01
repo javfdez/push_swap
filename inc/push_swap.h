@@ -35,6 +35,8 @@
 # define CHECK 17
 # define UPDATE 18
 # define CREATE 19
+# define ASCENDING 20
+# define DESCENDING 21
 # define ONECHUNK 2
 
 # include <libft.h>
@@ -95,5 +97,6 @@ void		topabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
 void		botatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
 void		botabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
 void		push_back(t_stack **stack_a, t_stack **stack_b);
+void		just_rotate(t_stack **stack_a, int total_size)
 
 #endif
