@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/30 20:51:05 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:02:30 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@
 # define CHECK 17
 # define UPDATE 18
 # define CREATE 19
-# define ASCENDING 20
-# define DESCENDING 21
-# define ONECHUNK 2
+# define ONECHUNK 3
 
 # include <libft.h>
 # include <unistd.h>
@@ -97,6 +95,5 @@ void		topabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
 void		botatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
 void		botabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
 void		push_back(t_stack **stack_a, t_stack **stack_b);
-void		just_rotate(t_stack **stack_a, int total_size)
 
 #endif

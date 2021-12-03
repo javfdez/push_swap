@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/30 21:14:21 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:09:21 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,25 @@ static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int size, int bl)
 	int			cnt;
 	int			moves;
 
-	chunk = -1;
+	chunk = 1;
 	node = 0;
 	cnt = 0;
-	while (++chunk < (bl - 1))
+	while (chunk < (bl - 1))
 	{
 		node += size;
-		while (cnt++ < node)
+		while (cnt < node && *stack_a)
 		{
 			moves = find_best_moves(*stack_a, *stack_b, node);
 			do_moves(stack_a, stack_b, node, moves);
+			cnt++;
 		}
+		chunk++;
 	}
 }
 
-static void	is_ordered(t_stack *stack_a, int order)
+static int	is_ordered(t_stack *stack_a)
 {
-	while (order == ASCENDING && stack_a->next
-		&& stack_a->next->content - stack_a->content == 1)
-		stack_a = stack_a->next;
-	while (order == DESCENDING && stack_a->next
-		&& stack_a->content - stack_a->next->content == 1)
+	while (stack_a->next && stack_a->next->content - stack_a->content == 1)
 		stack_a = stack_a->next;
 	if (!stack_a->next)
 		return (1);
@@ -93,10 +91,8 @@ void	push_swap(t_stack **stack_a)
 	stack_b = NULL;
 	total_size = ft_lstsize_stack(*stack_a);
 	index_stack(stack_a, total_size);
-	if (is_ordered(*stack_a, ASCENDING))
+	if (is_ordered(*stack_a))
 		return ;
-	if (is_ordered(*stack_a, DESCENDING))
-		just_rotate(stack_a, total_size);
 	if (total_size >= 100)
 	{
 		bl = (3 * total_size + 700) / 200;

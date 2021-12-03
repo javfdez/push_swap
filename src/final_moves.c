@@ -6,17 +6,11 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 19:53:11 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/30 20:50:47 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/03 00:22:30 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
-void	just_rotate(t_stack **stack_a, int total_size)
-{
-	while(total_size-- > 0)
-		rotate(stack_a, NULL, RA);
-}
 
 static int	fm_top(t_stack *stack_b, int max)
 {

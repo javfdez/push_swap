@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:25:31 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/30 20:46:54 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/03 00:44:04 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ void	botabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm)
 	bbot = 0;
 	if (counter_empty_b(*stack_b, value))
 		bbot = moves_b_bot(*stack_b, value, mm, UPDATE);
-	while (abot-- > 0 && bbot-- > 0)
+	while (abot > 0 && bbot > 0)
+	{
 		r_rotate(stack_a, stack_b, RRR);
+		abot--;
+		bbot--;
+	}
 	while (abot-- > 0)
 		r_rotate(stack_a, NULL, RRA);
 	while (bbot-- > 0)
@@ -83,8 +87,12 @@ void	topatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm)
 	btop = 0;
 	if (counter_empty_b(*stack_b, value))
 		btop = moves_b_top(*stack_b, value, mm, UPDATE);
-	while (atop-- > 0 && btop-- > 0)
+	while (atop > 0 && btop > 0)
+	{
 		rotate(stack_a, stack_b, RR);
+		atop--;
+		btop--;
+	}
 	while (atop-- > 0)
 		rotate(stack_a, NULL, RA);
 	while (btop-- > 0)
