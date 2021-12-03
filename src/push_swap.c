@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/12/03 01:09:21 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/03 19:55:28 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,12 @@ void	push_swap(t_stack **stack_a)
 		return ;
 	if (total_size >= 100)
 	{
-		bl = (3 * total_size + 700) / 200;
+		bl = ((3 * total_size) + 700) / 200;
 		size = total_size / bl;
 		first_chunks(stack_a, &stack_b, size, bl);
 		first_chunks(stack_a, &stack_b, total_size, ONECHUNK);
 	}
-	else // tener en cuenta si me mandan un solo numero o 2 o más pero que ya estén ordenados
+	else
 		first_chunks(stack_a, &stack_b, total_size, ONECHUNK);
 	push_back(stack_a, &stack_b);
 }
