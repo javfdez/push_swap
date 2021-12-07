@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 19:53:11 by javferna          #+#    #+#             */
-/*   Updated: 2021/12/03 00:22:30 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/07 20:55:34 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,27 @@ static int	fm_bot(t_stack *stack_b, int max)
 	return (bot);
 }
 
-void	push_back(t_stack **stack_a, t_stack **stack_b)
+void	push_back(t_stack **stack_a, t_stack **stack_b, int total_size)
 {
 	int	top;
 	int	bot;
 
-	top = fm_top(*stack_b, maxmin_up_check(0, 0, CHECK).max);
-	bot = fm_bot(*stack_b, maxmin_up_check(0, 0, CHECK).max);
-	if (top <= bot)
-	{
-		while (top-- > 0)
-			rotate(NULL, stack_b, RB);
-	}
-	else
-	{
-		while (bot-- > 0)
-			r_rotate(NULL, stack_b, RRB);
-	}
+	total_size -= 1;
 	while (*stack_b)
+	{
+		top = fm_top(*stack_b, total_size);
+		bot = fm_bot(*stack_b, total_size);
+		if (top <= bot)
+		{
+			while (top-- > 0)
+				rotate(NULL, stack_b, RB);
+		}
+		else
+		{
+			while (bot-- > 0)
+				r_rotate(NULL, stack_b, RRB);
+		}
 		push(stack_a, stack_b, PA);
+		total_size--;
+	}
 }

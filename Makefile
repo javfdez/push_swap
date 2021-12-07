@@ -6,7 +6,7 @@
 #    By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 12:14:32 by javferna          #+#    #+#              #
-#    Updated: 2021/11/30 19:58:27 by javferna         ###   ########.fr        #
+#    Updated: 2021/12/07 20:16:26 by javferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,9 @@ SRC	= $(addprefix $(SRC_DIR),	\
 		main.c					\
 		parse.c					\
 		index_stack.c			\
-		find_moves_b.c			\
-		find_moves_a.c			\
-		do_moves.c				\
+		find_moves.c			\
 		final_moves.c			\
+		small_numbers.c			\
 		push_swap.c)
 
 UTILS = $(addprefix $(UTILS_DIR),	\
@@ -32,7 +31,6 @@ UTILS = $(addprefix $(UTILS_DIR),	\
 		swap.c						\
 		rotate.c					\
 		push.c						\
-		counter_empty_b.c			\
 		list_stack.c				\
 		list_stack_2.c)
 

@@ -12,42 +12,38 @@
 
 #include <push_swap.h>
 
-int	moves_a_top(t_stack *stack_a, int node, int *value)
+int	moves_top(t_stack *stack_a, int node)
 {
 	int	atop;
 
+	if (!stack_a->next)
+		return (0);
 	atop = 0;
 	while (stack_a->content >= node)
 	{
 		stack_a = stack_a->next;
 		atop++;
 	}
-	if (value)
-		*value = stack_a->content;
 	return (atop);
 }
 
-int	moves_a_bot(t_stack *stack_a, int node, t_stack **rev, int *value)
+int	moves_bot(t_stack *stack_a, int node)
 {
 	t_stack	*aux;
+	t_stack	*rev;
 	int		abot;
 
 	if (!stack_a->next)
-	{
-		if (value)
-			*value = (*rev)->content;
 		return (0);
-	}
+	rev = ft_lstlast_stack(stack_a);
 	abot = 1;
-	while ((*rev)->content >= node)
+	while (rev->content >= node)
 	{
 		aux = stack_a;
-		while (aux->next->content != (*rev)->content)
+		while (aux->next->content != rev->content)
 			aux = aux->next;
-		*rev = aux;
+		rev = aux;
 		abot++;
 	}
-	if (value)
-		*value = (*rev)->content;
 	return (abot);
 }

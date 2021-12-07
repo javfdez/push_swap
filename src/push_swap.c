@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:07:53 by javferna          #+#    #+#             */
-/*   Updated: 2021/12/03 19:55:28 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/07 20:13:16 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,38 @@
 
 static void	do_moves(t_stack **stack_a, t_stack **stack_b, int node, int moves)
 {
-	if (moves == TOPATOPB)
-		topatopb(stack_a, stack_b, node, maxmin_up_check(0, 0, CHECK));
-	if (moves == TOPABOTB)
-		topabotb(stack_a, stack_b, node, maxmin_up_check(0, 0, CHECK));
-	if (moves == BOTATOPB)
-		botatopb(stack_a, stack_b, node, maxmin_up_check(0, 0, CHECK));
-	if (moves == BOTABOTB)
-		botabotb(stack_a, stack_b, node, maxmin_up_check(0, 0, CHECK));
+	int		top;
+	int		bot;
+
+	if (moves == TOP)
+	{
+		top = moves_top(*stack_a, node);
+		while (top-- > 0)
+			rotate(stack_a, NULL, RA);
+		push(stack_b, stack_a, PB);
+	}
+	else
+	{
+		bot = moves_bot(*stack_a, node);
+		while (bot-- > 0)
+			r_rotate(stack_a, NULL, RRA);
+		push(stack_b, stack_a, PB);
+	}
 }
 
-static int	find_best_moves(t_stack *stack_a, t_stack *stack_b, int node)
+static int	find_best_moves(t_stack *stack_a, int node)
 {
-	t_stack	*rev;
 	int		atop;
 	int		abot;
-	int		atopb;
-	int		abotb;
 
-	rev = ft_lstlast_stack(stack_a);
-	abot = moves_a_bot(stack_a, node, &rev, NULL);
-	atop = 0;
-	while (stack_a->content >= node)
-	{
-		stack_a = stack_a->next;
-		atop++;
-	}
-	atopb = TOP;
-	abotb = BOT;
-	atop = find_moves_b(stack_b, stack_a->content, atop, &atopb); //fix this for more than 100 numbers
-	abot = find_moves_b(stack_b, rev->content, abot, &abotb);
+	abot = moves_bot(stack_a, node);
+	atop = moves_top(stack_a, node);
 	if (atop <= abot)
-		return (atopb);
-	return (abotb);
+		return (TOP);
+	return (BOT);
 }
 
-static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int size, int bl)
+static void	move_chunks(t_stack **stack_a, t_stack **stack_b, int size, int bl)
 {
 	int			chunk;
 	int			node;
@@ -64,7 +60,7 @@ static void	first_chunks(t_stack **stack_a, t_stack **stack_b, int size, int bl)
 		node += size;
 		while (cnt < node && *stack_a)
 		{
-			moves = find_best_moves(*stack_a, *stack_b, node);
+			moves = find_best_moves(*stack_a, node);
 			do_moves(stack_a, stack_b, node, moves);
 			cnt++;
 		}
@@ -93,14 +89,14 @@ void	push_swap(t_stack **stack_a)
 	index_stack(stack_a, total_size);
 	if (is_ordered(*stack_a))
 		return ;
-	if (total_size >= 100)
+	if (total_size > 5)
 	{
 		bl = ((3 * total_size) + 700) / 200;
 		size = total_size / bl;
-		first_chunks(stack_a, &stack_b, size, bl);
-		first_chunks(stack_a, &stack_b, total_size, ONECHUNK);
+		move_chunks(stack_a, &stack_b, size, bl);
+		move_chunks(stack_a, &stack_b, total_size, ONECHUNK);
+		push_back(stack_a, &stack_b, total_size);
 	}
 	else
-		first_chunks(stack_a, &stack_b, total_size, ONECHUNK);
-	push_back(stack_a, &stack_b);
+		small_size(stack_a, &stack_b, total_size);
 }

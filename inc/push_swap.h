@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/12/03 01:02:30 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/07 20:16:44 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@
 # define PB 10
 # define TOP 11
 # define BOT 12
-# define TOPATOPB 13
-# define TOPABOTB 14
-# define BOTATOPB 15
-# define BOTABOTB 16
-# define CHECK 17
-# define UPDATE 18
-# define CREATE 19
 # define ONECHUNK 3
 
 # include <libft.h>
@@ -56,44 +49,30 @@ typedef struct s_index
 	t_stack	*next;
 }	t_index;
 
-typedef struct s_maxmin
-{
-	int	max;
-	int	min;
-}	t_maxmin;
-
-void		error_end(void);
-void		free_inputs(char **inputs);
-void		free_all_error(char **inputs, t_stack **stack);
-int			ft_atoi_ps(const char *str, char **inputs, t_stack **stack_a);
-char		*str_fd0(char *argv);
-char		*whitespace(char *argv);
-void		check_duplicates(t_stack *stack_a);
-void		fill_stack(char **inputs, t_stack **stack_a);
-void		check_inputs(char **inputs, t_stack **stack_a);
-void		swap(t_stack **stack_a, t_stack **stack_b, int ab);
-void		rotate(t_stack **stack_a, t_stack **stack_b, int ab);
-void		r_rotate(t_stack **stack_a, t_stack **stack_b, int ab);
-void		push(t_stack **stack_dst, t_stack **stack_src, int ab);
-void		push_swap(t_stack **stack_a);
-void		index_stack(t_stack **stack_a, int i);
-int			ft_lstsize_stack(t_stack *lst);
-void		ft_lstadd_back_stack(t_stack **lst, t_stack *new);
-void		ft_lstadd_front_stack(t_stack **lst, t_stack *new);
-void		ft_lstclear_stack(t_stack **lst);
-t_stack		*ft_lstlast_stack(t_stack *lst);
-t_stack		*ft_lstnew_stack(int content);
-int			find_moves_b(t_stack *stack_b, int value, int cnt, int *moves);
-int			moves_a_top(t_stack *stack_a, int node, int *value);
-int			moves_a_bot(t_stack *stack_a, int node, t_stack **rev, int *value);
-int			moves_b_top(t_stack *stack_b, int value, t_maxmin maxmin, int check);
-int			moves_b_bot(t_stack *stack_b, int value, t_maxmin maxmin, int check);
-int			counter_empty_b(t_stack *stack_b, int value);
-t_maxmin	maxmin_up_check(int value, int content, int cu);
-void		topatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
-void		topabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
-void		botatopb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
-void		botabotb(t_stack **stack_a, t_stack **stack_b, int node, t_maxmin mm);
-void		push_back(t_stack **stack_a, t_stack **stack_b);
+void	error_end(void);
+void	free_inputs(char **inputs);
+void	free_all_error(char **inputs, t_stack **stack);
+int		ft_atoi_ps(const char *str, char **inputs, t_stack **stack_a);
+char	*str_fd0(char *argv);
+char	*whitespace(char *argv);
+void	check_duplicates(t_stack *stack_a);
+void	fill_stack(char **inputs, t_stack **stack_a);
+void	check_inputs(char **inputs, t_stack **stack_a);
+void	swap(t_stack **stack_a, t_stack **stack_b, int ab);
+void	rotate(t_stack **stack_a, t_stack **stack_b, int ab);
+void	r_rotate(t_stack **stack_a, t_stack **stack_b, int ab);
+void	push(t_stack **stack_dst, t_stack **stack_src, int ab);
+void	push_swap(t_stack **stack_a);
+void	index_stack(t_stack **stack_a, int i);
+int		ft_lstsize_stack(t_stack *lst);
+void	ft_lstadd_back_stack(t_stack **lst, t_stack *new);
+void	ft_lstadd_front_stack(t_stack **lst, t_stack *new);
+void	ft_lstclear_stack(t_stack **lst);
+t_stack	*ft_lstlast_stack(t_stack *lst);
+t_stack	*ft_lstnew_stack(int content);
+int		moves_top(t_stack *stack_a, int node);
+int		moves_bot(t_stack *stack_a, int node);
+void	push_back(t_stack **stack_a, t_stack **stack_b, int total_size);
+void	small_size(t_stack **stack_a, t_stack **stack_b, int total_size);
 
 #endif
