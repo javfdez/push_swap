@@ -6,13 +6,13 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:33:04 by javferna          #+#    #+#             */
-/*   Updated: 2021/12/08 13:43:26 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/08 22:03:00 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	check_max_and_min(t_stack *stack_a, int b_content)
+static int	check_max_and_min(t_stack *stack_a, int b_content)
 {
 	t_stack	*aux;
 
@@ -37,11 +37,30 @@ int	check_max_and_min(t_stack *stack_a, int b_content)
 	return (b_content);
 }
 
+int	search_min(t_stack *stack_a, int b_content)
+{
+	t_stack	*aux;
+	int		cnt;
+	int		min;
+
+	cnt = 0;
+	min = 0;
+	if (b_content == 0)
+		min = 1;
+	aux = stack_a;
+	while (aux->content != min)
+	{
+		aux = aux->next;
+		cnt++;
+	}
+	return (cnt);
+}
+
 int	check_bot(t_stack *stack_a, int b_content)
 {
-	int	bot;
-	t_stack *rev;
-	t_stack *aux;
+	int		bot;
+	t_stack	*rev;
+	t_stack	*aux;
 
 	if (stack_a->content > b_content
 		&& ft_lstlast_stack(stack_a)->content < b_content)
@@ -76,4 +95,24 @@ int	check_top(t_stack *stack_a, int b_content)
 		stack_a = stack_a->next;
 	}
 	return (top);
+}
+
+int	where_in_a(t_stack *stack_a, int b_content)
+{
+	int	extreme;
+	int	top;
+	int	bot;
+
+	extreme = check_max_and_min(stack_a, b_content);
+	if (extreme == b_content)
+	{
+		top = check_top(stack_a, b_content);
+		bot = check_bot(stack_a, b_content);
+		if (top <= bot)
+			return (TOP);
+		return (BOT);
+	}
+	else if (extreme == MAX)
+		return (MAX);
+	return (MIN);
 }

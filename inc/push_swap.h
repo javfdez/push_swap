@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/12/08 13:34:43 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/08 21:56:41 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	push_back(t_stack **stack_a, t_stack **stack_b, int total_size);
 void	small_size(t_stack **stack_a, t_stack **stack_b, int total_size);
 int		check_top(t_stack *stack_a, int b_content);
 int		check_bot(t_stack *stack_a, int b_content);
-int		check_max_and_min(t_stack *stack_a, int b_content);
+int		search_min(t_stack *stack_a, int b_content);
+int		where_in_a(t_stack *stack_a, int b_content);
 
 #endif

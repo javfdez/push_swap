@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 19:53:11 by javferna          #+#    #+#             */
-/*   Updated: 2021/12/07 20:55:34 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/08 22:01:59 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	fm_top(t_stack *stack_b, int max)
 static int	fm_bot(t_stack *stack_b, int max)
 {
 	t_stack	*aux;
-	t_stack *rev;
+	t_stack	*rev;
 	int		bot;
 
 	bot = 1;
