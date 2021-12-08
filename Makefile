@@ -6,7 +6,7 @@
 #    By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 12:14:32 by javferna          #+#    #+#              #
-#    Updated: 2021/12/07 20:16:26 by javferna         ###   ########.fr        #
+#    Updated: 2021/12/08 13:36:54 by javferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ UTILS = $(addprefix $(UTILS_DIR),	\
 		swap.c						\
 		rotate.c					\
 		push.c						\
+		small_checks.c				\
 		list_stack.c				\
 		list_stack_2.c)
 

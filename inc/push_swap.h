@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/12/07 20:16:44 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/08 13:34:43 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define PB 10
 # define TOP 11
 # define BOT 12
+# define MAX 13
+# define MIN 14
 # define ONECHUNK 3
 
 # include <libft.h>
@@ -74,5 +76,8 @@ int		moves_top(t_stack *stack_a, int node);
 int		moves_bot(t_stack *stack_a, int node);
 void	push_back(t_stack **stack_a, t_stack **stack_b, int total_size);
 void	small_size(t_stack **stack_a, t_stack **stack_b, int total_size);
+int		check_top(t_stack *stack_a, int b_content);
+int		check_bot(t_stack *stack_a, int b_content);
+int		check_max_and_min(t_stack *stack_a, int b_content);
 
 #endif
