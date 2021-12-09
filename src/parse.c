@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 22:22:55 by javferna          #+#    #+#             */
-/*   Updated: 2021/11/07 19:44:15 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/09 20:14:36 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	check_inputs(char **inputs, t_stack **stack_a)
 		j = 0;
 		if (inputs[i][j] == '-' || inputs[i][j] == '+')
 			j++;
+		if (j == 1 && !inputs[i][j])
+			free_all_error(inputs, stack_a);
 		while (inputs[i][j])
 		{
 			if (inputs[i][j] < '0' || inputs[i][j] > '9')
