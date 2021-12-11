@@ -6,7 +6,7 @@
 #    By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 12:14:32 by javferna          #+#    #+#              #
-#    Updated: 2021/12/08 13:36:54 by javferna         ###   ########.fr        #
+#    Updated: 2021/12/11 18:10:51 by javferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,6 @@ SRC	= $(addprefix $(SRC_DIR),	\
 UTILS = $(addprefix $(UTILS_DIR),	\
 		atoi.c						\
 		exit_free.c					\
-		str_fd0.c					\
 		swap.c						\
 		rotate.c					\
 		push.c						\

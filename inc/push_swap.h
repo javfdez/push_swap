@@ -6,7 +6,7 @@
 /*   By: javferna <javferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:35 by javferna          #+#    #+#             */
-/*   Updated: 2021/12/08 21:56:41 by javferna         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:54:47 by javferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
-# define MAX_LINE 2048
 # define SA 0
 # define SB 1
 # define SS 2
@@ -55,8 +54,6 @@ void	error_end(void);
 void	free_inputs(char **inputs);
 void	free_all_error(char **inputs, t_stack **stack);
 int		ft_atoi_ps(const char *str, char **inputs, t_stack **stack_a);
-char	*str_fd0(char *argv);
-char	*whitespace(char *argv);
 void	check_duplicates(t_stack *stack_a);
 void	fill_stack(char **inputs, t_stack **stack_a);
 void	check_inputs(char **inputs, t_stack **stack_a);
