@@ -3,6 +3,7 @@ My fifth proyect at 42. An algorithm that uses a limited list of instructions to
 
 ## Instruction list
 | Command |	Name | Description |
+| ------- |	---- | ----------- |
 | sa | Swap a | Swaps the first two numbers of stack a |
 | sb | Swap b | Swaps the first two numbers of stack b |
 | ss | Swap a + Swap b | Does sa and then sb |
